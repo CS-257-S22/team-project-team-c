@@ -1,0 +1,7 @@
+
+feature i: ingredients
+
+Sample command line usage: 
+foods.py -i 'tomato' #returns a random product that contains tomatoes in its ingredient list
+
+
