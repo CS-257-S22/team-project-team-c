@@ -1,0 +1,9 @@
+cat Animals.txt
+
+cat Animals.txt
+git add*
+git commit -m "favroites of my teammates" 
+git push -u origin BRANCH
+git add *
+git commit -m "favorites from my teammates"
+git push -u origin Alice
