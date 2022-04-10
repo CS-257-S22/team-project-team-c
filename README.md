@@ -1,4 +1,4 @@
-# team-project-team-c
+# Team C
 Team members: 
 * Morgan
 * Alice 
