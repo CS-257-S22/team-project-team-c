@@ -20,7 +20,7 @@ Sample function signautres:
 - hasIngredient(ingredient, product, brand)
     - Input: an ingredient and the name of the product
     - Returns: TRUE if the product contains the said ingredient, and False otherwise
-    >>> getIngredients("garlic", "Roased Garlic Hummus", "Target")
+    >>> hasIngredient("garlic", "Roased Garlic Hummus", "Target")
     >>> True
 
 
