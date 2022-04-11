@@ -8,3 +8,10 @@ class TestWhat2Eat(unittest.TestCase):
         providedNutrients = ["protein", "sugar", "vitaminC"]
 
         self.assertEqual(nutrients, providedNutrients)
+        
+class TestHasIngredients(unittest.TestCase):
+    def test_has_ingredient(self):
+        """Testing the function hasIngredients
+        written by Isabella """
+        result = hasIngredient("garlic".upper(), "Roasted Garlic Hummus", "Target")
+        self.assertEqual(result, True)
