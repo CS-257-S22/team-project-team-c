@@ -1,3 +1,6 @@
+import unittest
+import what2eat
+
 class TestWhat2Eat(unittest.TestCase):
     def test_compareNutrients(self):
         """Sample test for compareNutrients"""
