@@ -9,6 +9,7 @@ Sample function signautres:
     - Returns: the nutrition values for the two products as a list 
 
 >>>compareNutrients("Roased Garlic Hummus", "Roasted Red Pepper Hummus", "Target", "Target", "protein")
+>>>[8, 8]
     
 
 - getIngredients(product, brand)
