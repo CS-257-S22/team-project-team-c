@@ -15,7 +15,7 @@ Sample function signautres:
     - Input: product name and brand in string representation
     - Output: the ingredient list
     >>> getIngredients("Roased Garlic Hummus", "Target")
-    >>> ["CHICKPEAS, WATER, SESAME TAHINI, GARLIC, CANOLA/OLIVE OIL BLEND, PIMIENTOS, SALT, CITRIC ACID, CAPERS, SPICES, VINEGAR, POTASSIUM SORBATE AND SODIUM BENZOATE"]
+    >>> ["CHICKPEAS", "WATER", "SESAME TAHINI", "GARLIC", "CANOLA/OLIVE OIL BLEND", "PIMIENTOS", "SALT", "CITRIC ACID", "CAPERS", "SPICES", "VINEGAR", "POTASSIUM SORBATE AND SODIUM BENZOATE"]
 
 - hasIngredient(ingredient, product, brand)
     - Input: an ingredient and the name of the product
