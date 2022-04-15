@@ -30,21 +30,6 @@ def returnBrands():
 
     return allBrands 
 
-'''
-Helper method to display (print) all brands as a list
-'''
-def displayBrands():
-    productData = load_csv_file("SmallProductSheet.csv")
-    allBrands = []
-
-    for item in productData:
-        brand = item[1]
-        if brand not in allBrands and brand: 
-            allBrands.append(brand)
-
-    allBrands.remove('brand_name') #remove the column name 
-
-    print(allBrands) 
 
 '''
 Helper method to check if user input is a valid brand 
