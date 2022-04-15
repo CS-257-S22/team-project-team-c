@@ -28,6 +28,8 @@ def load_csv_file(filename):
     return productData
 
 
+
+
 def getAllProducts(brandName):
     # get a brand name from the user (calls getUserBrandInput)
     productData = load_csv_file("SmallProductSheet.csv")
@@ -36,14 +38,11 @@ def getAllProducts(brandName):
         if line[1] == brandName:
             productList.append(line[0])
     return productList
+    
+print(getAllProducts("FRESH & EASY"))
 
-#getAllProducts("FRESH & EASY")
-
-
-
-def getProductIngredients(brandName, productName):
+# def getProductIngredients(brandName, productName):
    #load csv file
    # isolate by brand
    # isolate by product
    # return ingredient list  
-
