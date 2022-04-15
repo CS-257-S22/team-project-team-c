@@ -80,6 +80,9 @@ Returns: True if the product contains the ingredient, False otherwise
 def containsIngredient(ingredient, brandName, productName):
     if not isValidBrand(brandName): 
         return False
+    
+    if not brandCarriesProduct(brandName, productName):
+        return False
 
     ingredients = getProductIngredients(brandName, productName)
 
@@ -93,6 +96,9 @@ Input: brand, product (string)
 Returns: True if the brand sells the product, False otherwise. 
 '''
 def brandCarriesProduct(brandName, productName): 
+    if not isValidBrand(brandName): 
+        return False
+
     allBrandProducts = getAllProducts(brandName)
 
     if productName in allBrandProducts:
@@ -106,6 +112,6 @@ def main():
     #TESTING STUFF - uncomment the line(s) you want to test. 
     #print(getAllProducts("FRESH & EASY"))
     #print(getProductIngredients('FRESH & EASY', 'BARBECUE SAUCE'))
-    print(containsIngredient('molasses', 'RESH & EASY', 'BARBECUE SAUCE'))
+    print(containsIngredient('molasses', 'FRESH & EASY', 'BARBECUE SAUCE'))
     #print(brandCarriesProduct('FRESH & EASY', 'BARBECUE SAUCE'))
 main()
