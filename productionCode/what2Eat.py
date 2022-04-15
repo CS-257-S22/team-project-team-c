@@ -40,7 +40,7 @@ def isValidBrand(brandName):
         return True
     else: 
         print("The brand is non-existent or mispelled. The list of brands are: ") #Error message 
-        displayBrands()
+        print(allBrands)
         return False
 
 
@@ -70,15 +70,41 @@ def getProductIngredients(brandName, productName):
     
     for item in productData:
         if item[0] == productName and item[1] == brandName:
-            print(item[2])
+            return item[2].lower() #convert to lower case 
     
     
+'''
+Input: brand, product, and ingredient (string)
+Returns: True if the product contains the ingredient, False otherwise 
+'''
+def containsIngredient(ingredient, brandName, productName):
+    ingredients = getProductIngredients(brandName, productName)
 
+    if ingredient in ingredients:
+        return True
+    else:
+        return False
 
+'''
+Input: brand, product (string)
+Returns: True if the brand sells the product, False otherwise. 
+'''
+def brandCarriesProduct(brandName, productName): 
+    allBrandProducts = getAllProducts(brandName)
 
-# def main():
-#     #TESTING STUFF 
-#     #print(getAllProducts("FRESH & EASY"))
-# getProductIngredients('FRESH & EASY', 'BARBECUE SAUCE')
+    if productName in allBrandProducts:
+        return True
+    else:
+        return False 
+            
+    
 
+def main():
+    #TESTING STUFF - uncomment the line(s) you want to test. 
 
+    #print(getAllProducts("FRESH & EASY"))
+    #print(getProductIngredients('FRESH & EASY', 'BARBECUE SAUCE'))
+    #print(containsIngredient('molasses', 'FRESH & EASY', 'BARBECUE SAUCE'))
+    print(brandCarriesProduct('FRESH & EASY', 'BARBECUE SAUCE'))
+
+main()
