@@ -21,18 +21,19 @@ def returnBrands():
     productData = load_csv_file("SmallProductSheet.csv")
     allBrands = []
 
-    for item in productData:
-        brand = item[1]
+    for row in productData:
+        brand = row[1]
         if brand not in allBrands and brand: 
             allBrands.append(brand)
 
-    allBrands.remove('brand_name') #remove the column name 
-
+    allBrands.remove('brand_name') #remove the column name   
     return allBrands 
 
 
 '''
-Helper method to check if user input is a valid brand 
+Helper method to check if user input is a valid brand. Iterates through allbrand list to check. 
+Input: brand name taken from user 
+Outpu: boolean. True if brand exists. False if it does not. 
 '''
 def isValidBrand(brandName):
     allBrands = returnBrands()
@@ -49,7 +50,7 @@ Input: brand name
 Returns: a list of all products carried by the given brand. 
 '''
 def getAllProducts(brandName):
-
+    
     if isValidBrand(brandName):
         productData = load_csv_file("SmallProductSheet.csv") #product data continaing name, brand, and ingredients 
         productList = []
@@ -57,6 +58,7 @@ def getAllProducts(brandName):
         for item in productData: 
             if item[1] == brandName:
                 productList.append(item[0])
+                
 
         return productList
 
@@ -110,8 +112,10 @@ def brandCarriesProduct(brandName, productName):
 
 def main():
     #TESTING STUFF - uncomment the line(s) you want to test. 
+    #print(returnBrands())
     #print(getAllProducts("FRESH & EASY"))
     #print(getProductIngredients('FRESH & EASY', 'BARBECUE SAUCE'))
-    print(containsIngredient('molasses', 'FRESH & EASY', 'BARBECUE SAUCE'))
-    #print(brandCarriesProduct('FRESH & EASY', 'BARBECUE SAUCE'))
+    #print(containsIngredient('molasses', 'FRESH & EASY', 'BARBECUE SAUCE'))
+    print(brandCarriesProduct('FRESH & EASY', 'BARBECUE SAUCE'))
+
 main()
