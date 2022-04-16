@@ -21,8 +21,8 @@ def returnBrands():
     productData = load_csv_file("SmallProductSheet.csv")
     allBrands = []
 
-    for item in productData:
-        brand = item[1]
+    for row in productData:
+        brand = row[1]
         if brand not in allBrands and brand: 
             allBrands.append(brand)
 
@@ -54,9 +54,10 @@ def getAllProducts(brandName):
         productData = load_csv_file("SmallProductSheet.csv") #product data continaing name, brand, and ingredients 
         productList = []
 
-        for item in productData: 
-            if item[1] == brandName:
-                productList.append(item[0])
+        for row in productData: 
+            if row[1] == brandName:
+                productName = row[0].lower() #convert product name into lowercase characters 
+                productList.append(productName)
 
         return productList
 
@@ -68,9 +69,10 @@ Returns: the list of ingredients
 def getProductIngredients(brandName, productName):
     productData = load_csv_file("SmallProductSheet.csv") #product data continaing name, brand, and ingredients 
     
-    for item in productData:
-        if item[0] == productName and item[1] == brandName:
-            return item[2].lower() #convert to lower case 
+    for row in productData:
+        if row[0] == productName and row[1] == brandName:
+            return row[2].lower() #convert to lower case 
+            # might be useful to return a list instead of a string
     
     
 '''
@@ -106,12 +108,26 @@ def brandCarriesProduct(brandName, productName):
     else:
         return False 
             
-    
+if __name__ == "__main__":
 
-def main():
+    if sys.argv[1] == 'getProductIngredients':
+        brandName = sys.argv[2]
+        productName = sys.argv[3].upper()
+        print(getProductIngredients(brandName, productName))
+    
+    elif sys.argv[1] == 'getAllProducts':
+        brandName = sys.argv[2]
+        print(getAllProducts(brandName))
+
+    else:
+        print("Incorrect argument(s)")
+
     #TESTING STUFF - uncomment the line(s) you want to test. 
-    #print(getAllProducts("FRESH & EASY"))
+    #print(isValidBrand(""))
+    #print(getAllProducts("Stater Bros. Markets Inc."))
     #print(getProductIngredients('FRESH & EASY', 'BARBECUE SAUCE'))
-    print(containsIngredient('molasses', 'FRESH & EASY', 'BARBECUE SAUCE'))
+    #print(getProductIngredients(sys.argv[0], sys.argv[1]))
+    #print(containsIngredient('molasses', 'FRESH & EASY', 'BARBECUE SAUCE'))
     #print(brandCarriesProduct('FRESH & EASY', 'BARBECUE SAUCE'))
-main()
+
+
