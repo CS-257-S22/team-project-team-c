@@ -21,10 +21,10 @@ class TestGetAllProducts(unittest.TestCase):
         """Testing the helper function returnBrands. The test function uses a small""" 
         """sample of the dataset to compare results"""
         """Written by Morgan"""
-        
+
         brands = what2Eat.returnBrands("dataForTesting.csv")
         accurateListOfBrands = ["G. T. Japan, Inc.","FRESH & EASY"]
-        self.asserEqual(brands, accurateListOfBrands)
+        self.assertEqual(brands, accurateListOfBrands)
 
 
 

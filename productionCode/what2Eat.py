@@ -18,8 +18,8 @@ def load_csv_file(filename):
 '''
 Helper method to return all brands as a list
 '''
-def returnBrands():
-    productData = load_csv_file("SmallProductSheet.csv")
+def returnBrands(fileName):
+    productData = load_csv_file(fileName)
     allBrands = []
 
     for row in productData:
@@ -37,7 +37,7 @@ Input: brand name taken from user
 Outpu: boolean. True if brand exists. False if it does not. 
 '''
 def isValidBrand(brandName):
-    allBrands = returnBrands()
+    allBrands = returnBrands("SmallProductSheet.csv")
     if brandName in allBrands:
         return True
     else: 
@@ -111,7 +111,7 @@ def brandCarriesProduct(brandName, productName):
             
              
 
-def main():
+if __name__ == '__main__':    
     #TESTING STUFF - uncomment the line(s) you want to test. 
     #print(returnBrands())
     #print(getAllProducts("FRESH & EASY"))
@@ -131,4 +131,3 @@ def main():
     else:
         print("Incorrect argument(s)")
 
-main()
