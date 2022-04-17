@@ -108,8 +108,16 @@ def brandCarriesProduct(brandName, productName):
         return True
     else:
         return False 
-            
-             
+''''This method prints out the help page. It is called by the arguments in main. 
+''''
+ def printHelpPage():
+    print("Welcome to What2Eat!")
+    print ("Here are some functions that may be helpful for navigating our interface")
+    print ("To retrive all products from a specific brand enter the following into the terminal:")
+    print ("python what2Eat.py getAllProducts [BRAND NAME]") 
+    print ()
+    print ("To retreive all ingredients for a specific product from a specific brand enter the following into the terminal:")
+    python ("python what2Eat.py getProductIngredients [BRAND NAME] [PRODUCT NAME]") 
 
 if __name__ == '__main__':    
     #TESTING STUFF - uncomment the line(s) you want to test. 
