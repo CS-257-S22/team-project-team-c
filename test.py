@@ -15,3 +15,24 @@ class TestHasIngredients(unittest.TestCase):
         written by Isabella """
         result = hasIngredient("garlic".upper(), "Roasted Garlic Hummus", "Target")
         self.assertEqual(result, True)
+class TestLoadCSVFile(unittest.TestCase):
+    def test_load_csv_file(self):
+        """Testing the function loadCSVFile written by Alice"""
+        productData = load_csv_file("DummyData.csv")
+        testData = ["MOCHI ICE CREAM BONBONS","G. T. Japan", "Inc.","MILK, CREAM, SUGAR"]
+       
+        self.assertEqual(productData, testData)
+
+class TestValidBrandName(unittest.TestCase):
+    def test_is_Valid_Brand_True(self):
+        """Testing the function is_Valid_Brand written by Alice. This test takes in real brand and isValidBrand is expected to
+        return true. """
+       
+        validBrandBool = isValidBrand("G. T. Japan, Inc")
+        self.assertEqual(True,validBrandBool)
+
+    def test_is_Valid_Brand_False(self):
+        """Testing the function is_Valid_Brand written by Alice. This test makes
+         sure that method returns false when the brand is invalid"""
+        invalidBrandBool = validBrand("G. T. China, Inc")
+        self.assertEqual(invalidBrandBool, False)
