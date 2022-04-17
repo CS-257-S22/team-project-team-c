@@ -15,6 +15,8 @@ class TestHasIngredients(unittest.TestCase):
         written by Isabella """
         result = hasIngredient("garlic".upper(), "Roasted Garlic Hummus", "Target")
         self.assertEqual(result, True)
+        
+        
 class TestLoadCSVFile(unittest.TestCase):
     def test_load_csv_file(self):
         """Testing the function loadCSVFile written by Alice"""
@@ -29,7 +31,7 @@ class TestValidBrandName(unittest.TestCase):
         return true. """
        
         validBrandBool = isValidBrand("G. T. Japan, Inc")
-        self.assertEqual(True,validBrandBool)
+        self.assertEqual(validBrandBool, True)
 
     def test_is_Valid_Brand_False(self):
         """Testing the function is_Valid_Brand written by Alice. This test makes
