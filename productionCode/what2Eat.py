@@ -119,4 +119,14 @@ def main():
     #print(containsIngredient('molasses', 'FRESH & EASY', 'BARBECUE SAUCE'))
     print(brandCarriesProduct('FRESH & EASY', 'BARBECUE SAUCE'))
 
-main()
+    if sys.argv[1] == 'getProductIngredients':
+        brandName = sys.argv[2]
+        productName = sys.argv[3].upper()
+        print(getProductIngredients(brandName, productName))
+
+    elif sys.argv[1] == 'getAllProducts':
+        brandName = sys.argv[2]
+        print(getAllProducts(brandName))
+
+    else:
+        print("Incorrect argument(s)")
