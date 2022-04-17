@@ -130,3 +130,5 @@ def main():
 
     else:
         print("Incorrect argument(s)")
+
+main()
