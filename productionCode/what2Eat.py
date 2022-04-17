@@ -2,6 +2,7 @@ import string
 import sys 
 import csv 
 
+
 '''Loads information from a .csv file. Each row is represented as a list within a larger list.
 Input: file name (should be .csv format)
 Return: a nested 2D list of product data 
@@ -57,8 +58,8 @@ def getAllProducts(brandName):
 
         for row in productData: 
             if row[1] == brandName:
-                productName = row[0].lower() #convert product name into lowercase characters 
-                productList.append(productName)
+                productList.append(row[0])
+                
 
         return productList
 
@@ -73,7 +74,6 @@ def getProductIngredients(brandName, productName):
     for row in productData:
         if row[0] == productName and row[1] == brandName:
             return row[2].lower() #convert to lower case 
-            # might be useful to return a list instead of a string
     
     
 '''
@@ -109,25 +109,14 @@ def brandCarriesProduct(brandName, productName):
     else:
         return False 
             
-if __name__ == "__main__":
+             
 
-    if sys.argv[1] == 'getProductIngredients':
-        brandName = sys.argv[2]
-        productName = sys.argv[3].upper()
-        print(getProductIngredients(brandName, productName))
-    
-    elif sys.argv[1] == 'getAllProducts':
-        brandName = sys.argv[2]
-        print(getAllProducts(brandName))
-
-    else:
-        print("Incorrect argument(s)")
-
+def main():
     #TESTING STUFF - uncomment the line(s) you want to test. 
     #print(returnBrands())
     #print(getAllProducts("FRESH & EASY"))
     #print(getProductIngredients('FRESH & EASY', 'BARBECUE SAUCE'))
     #print(containsIngredient('molasses', 'FRESH & EASY', 'BARBECUE SAUCE'))
-    #print(brandCarriesProduct('FRESH & EASY', 'BARBECUE SAUCE'))
+    print(brandCarriesProduct('FRESH & EASY', 'BARBECUE SAUCE'))
 
-
+main()
