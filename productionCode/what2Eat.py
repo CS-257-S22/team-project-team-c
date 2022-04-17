@@ -24,7 +24,7 @@ def returnBrands(fileName):
 
     for row in productData:
         brand = row[1]
-        if brand not in allBrands and brand: 
+        if brand and brand not in allBrands: 
             allBrands.append(brand)
 
     allBrands.remove('brand_name') #remove the column name   
