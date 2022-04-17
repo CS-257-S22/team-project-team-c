@@ -23,6 +23,19 @@ Sample function signautres:
     - Returns: TRUE if the product contains the said ingredient, and False otherwise
     >>> hasIngredient("garlic", "Roased Garlic Hummus", "Target")
     >>> True
+    
+ List of methods: (for my purposes 
+ 
+def load_csv_file(filename):
+def returnBrands(fileName):
+def isValidBrand(brandName):
+def getAllProducts(brandName):
+def getProductIngredients(brandName, productName):
+def containsIngredient(ingredient, brandName, productName):
+def brandCarriesProduct(brandName, productName): 
+def printHelpPage():
+
+
 
 
 

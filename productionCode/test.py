@@ -20,7 +20,7 @@ class TestHasIngredients(unittest.TestCase):
 class TestLoadCSVFile(unittest.TestCase):
     def test_load_csv_file(self):
         """Testing the function loadCSVFile written by Alice"""
-        productData = load_csv_file("DummyData.csv")
+        productData = load_csv_file("SmallProductSheet.csv")
         testData = [["MOCHI ICE CREAM BONBONS"],["G. T. Japan", "Inc."],["MILK, CREAM, SUGAR"]]
        
         self.assertEqual(productData, testData)
