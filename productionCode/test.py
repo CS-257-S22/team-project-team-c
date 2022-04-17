@@ -16,12 +16,12 @@ class TestHasIngredients(unittest.TestCase):
         result = hasIngredient("garlic".upper(), "Roasted Garlic Hummus", "Target")
         self.assertEqual(result, True)
         
-        
+       """The following Tests were written by Alice """"
 class TestLoadCSVFile(unittest.TestCase):
     def test_load_csv_file(self):
         """Testing the function loadCSVFile written by Alice"""
         productData = load_csv_file("DummyData.csv")
-        testData = ["MOCHI ICE CREAM BONBONS","G. T. Japan", "Inc.","MILK, CREAM, SUGAR"]
+        testData = [["MOCHI ICE CREAM BONBONS"],["G. T. Japan", "Inc."],["MILK, CREAM, SUGAR"]]
        
         self.assertEqual(productData, testData)
 
