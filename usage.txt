@@ -10,7 +10,6 @@ Sample function signautres:
 
 >>>compareNutrients("Roased Garlic Hummus", "Roasted Red Pepper Hummus", "Target", "Target", "protein")
 >>>[8, 8]
-    
 
 - getIngredients(product, brand)
     - Input: product name and brand in string representation
