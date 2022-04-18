@@ -71,7 +71,7 @@ class what2Eat:
 
     '''
     Input: brand and product
-    Returns: the list of ingredients 
+    Returns: the list of ingredients that the given product contains 
     '''
     def getProductIngredients(self, brandName, productName):
         productData = self.load_csv_file() #product data continaing name, brand, and ingredients 
@@ -113,9 +113,11 @@ class what2Eat:
             return True
         else:
             return False 
-                
-                
+                           
+    def printHelpPage():
 
+        helpStatement =  "Welcome to What2Eat!\nPlease refer to the following instructions to navigate our interface.\n In order to use the USDA food database we reccomend you use SmallProductSheet.csv for your file.\n To look up products by brand enter the following into the terminal:                   python what2Eat.py getAllProducts [brandname] [fileName]\n to look up the nutrients of a specific product enter the following into the terminal: python what2Eat.py getIngredients [brandname] [productName] [fileName]\n"
+        return helpStatement
     # if __name__ == '__main__':    
         #TESTING STUFF - uncomment the line(s) you want to test. 
         #print(returnBrands())
@@ -125,21 +127,25 @@ class what2Eat:
 
 dataFromSmallProductSheet = what2Eat("SmallProductSheet.csv")
 
-print(dataFromSmallProductSheet.brandCarriesProduct('FRESH & EASY', 'BARBECUE SAUCE'))
+#print(dataFromSmallProductSheet.brandCarriesProduct('FRESH & EASY', 'BARBECUE SAUCE'))
+if len(sys.argv) > 1:
+    if sys.argv[1] == 'getProductIngredients':
+        brandName = sys.argv[2]
+        productName = sys.argv[3].upper()
+        fileName = sys.argv[4]
+        sampleData = what2Eat(fileName)
+        print(sampleData.getProductIngredients(brandName, productName))
 
-if sys.argv[1] == 'getProductIngredients':
-    brandName = sys.argv[2]
-    productName = sys.argv[3].upper()
-    fileName = sys.argv[4]
-    sampleData = what2Eat(fileName)
-    print(sampleData.getProductIngredients(brandName, productName))
+    elif sys.argv[1] == 'getAllProducts':
+        brandName = sys.argv[2]
+        fileName = sys.argv[3]
+        sampleData = what2Eat(fileName)
+        print(sampleData.getAllProducts(brandName))
 
-elif sys.argv[1] == 'getAllProducts':
-    brandName = sys.argv[2]
-    fileName = sys.argv[3]
-    sampleData = what2Eat(fileName)
-    print(sampleData.getAllProducts(brandName))
+    elif sys.argv[1] == 'help':
+        text = printHelpPage()
 
-else:
-    print("Incorrect argument(s)")
+
+    else:
+        print("Incorrect argument(s)")
 
