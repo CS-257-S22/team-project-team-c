@@ -65,12 +65,13 @@ class what2Eat:
         Returns:
             productList: a list of all products carried by the given brand
         """
-        productData = self.load_csv_file() #product data continaing name, brand, and ingredients 
-        productList = []
-        for row in productData: 
-            if row[1] == brandName:
-                productList.append(row[0])
-        return productList
+        if self.isValidBrand(brandName):
+            productData = self.load_csv_file() #product data continaing name, brand, and ingredients 
+            productList = []
+            for row in productData: 
+                if row[1] == brandName:
+                    productList.append(row[0])
+            return productList
 
     def getProductIngredients(self, brandName, productName):
         """
@@ -96,11 +97,18 @@ class what2Eat:
         Returns:
             a boolean value that is True if the product contains the ingredient and False if it does not. 
         """
-        ingredients = self.getProductIngredients(brandName, productName)
-        if ingredient in ingredients:
-            return True
-        else:
+        if not self.isValidBrand(brandName): 
             return False
+        
+        elif not self.brandCarriesProduct(brandName, productName):
+            return False
+
+        else:
+            ingredients = self.getProductIngredients(brandName, productName)
+            if ingredient in ingredients:
+                return True
+            else:
+                return False
 
     def brandCarriesProduct(self, brandName, productName): 
         """
@@ -111,11 +119,14 @@ class what2Eat:
         Returns:
             a boolean value that is True if the brand carries the product and False if it does not. 
         """
-        allBrandProducts = self.getAllProducts(brandName)
-        if productName in allBrandProducts:
-            return True
+        if not self.isValidBrand(brandName): 
+            return False
         else:
-            return False 
+            allBrandProducts = self.getAllProducts(brandName)
+            if productName in allBrandProducts:
+                return True
+            else:
+                return False 
         
 if __name__ == '__main__': 
 
