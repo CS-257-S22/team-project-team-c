@@ -3,14 +3,6 @@ from webbrowser import get
 from what2Eat import *
 
 class TestIngredient(unittest.TestCase):
-    # def test_ingredient(self):
-    #     result = self.hasIngredient("LEMON", "LEMONPIE", "TARGET")
-    #     self.assertEqual(result, True)
-        #make a bit of dummy data
-        #call your non-existent function
-        #check if the result of the call is what it should be
-        #   probably using self.assertEqual(something, something_else)
-
     def test_load_csv_file(self):
         sampleData = what2Eat("SmallProductSheet.csv")
         result = sampleData.load_csv_file()
