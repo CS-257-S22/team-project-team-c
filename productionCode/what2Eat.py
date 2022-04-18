@@ -130,11 +130,11 @@ class what2Eat:
         
 if __name__ == '__main__': 
 
-    my_parser = argparse.ArgumentParser()
-    my_parser.add_argument('functionName', help='functionName')
-    my_parser.add_argument('-b','--brandName', help= 'brandName')
-    my_parser.add_argument('-p','--productName', help= 'productName')
-    my_parser.add_argument('-f','--fileName', help= 'fileName', default='SmallProductSheet.csv')
+    my_parser = argparse.ArgumentParser(description="Welcome to What2Eat!\n Please refer to the following instructions to navigate our interface.\n In order to use the USDA food database we recommend you use SmallProductSheet.csv for your file.\n To look up products by brand enter the following into the terminal:                   python what2Eat.py getAllProducts [brandname] [fileName]\n to look up the nutrients of a specific product enter the following into the terminal: python what2Eat.py getIngredients [brandname] [productName] [fileName]\n")
+    my_parser.add_argument('functionName', help='the name of the function you want to use')
+    my_parser.add_argument('-b','--brandName', help= 'the name of the brand you want to look up (should be a string)')
+    my_parser.add_argument('-p','--productName', help= 'the name of product you want to look up (should be a string)')
+    my_parser.add_argument('-f','--fileName', help= 'the file you want to search in (default is SmallProductSheet.csv)', default='SmallProductSheet.csv')
     args = my_parser.parse_args()
     sampleData = what2Eat(args.fileName)
 
