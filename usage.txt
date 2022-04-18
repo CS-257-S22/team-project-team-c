@@ -1,12 +1,12 @@
 Command line usage:
     feature b: brand
     >>> python3 what2Eat.py getAllProducts -b 'FRESH & EASY' 
-        #returns all products carried by FRESH & EASY
+        #returns all products (as a list) carried by FRESH & EASY 
     >>> ['CHIPOTLE BARBECUE SAUCE', 'HOT & SPICY BARBECUE SAUCE', ...... 'PASTA SAUCE WITH IMPORTED ITALIAN TOMATOES & OLIVE OIL']
 
     feature p: product
     >>> python3 what2Eat.py getProductIngredients -b 'FRESH & EASY' -p 'BARBECUE SAUCE'
-        #returns ingredients of BARBECUE SAUSE carried by FRESH & EASY
+        #returns ingredients (as a single string) of BARBECUE SAUCE carried by FRESH & EASY 
     >>> tomato puree (water, tomato paste), sugar, distilled vinegar, molasses, water, modified corn starch, 
         salt, bourbon whiskey, contains 1% or less of: mustard flour, spice, dried onion, dried garlic, 
         natural flavor, xanthan gum, caramel color.
