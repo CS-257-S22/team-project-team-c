@@ -73,6 +73,11 @@ class what2Eat:
                     productList.append(row[0])
             return productList
 
+
+    '''
+    Input: brand and product
+    Returns: the list of ingredients that the given product contains 
+    '''
     def getProductIngredients(self, brandName, productName):
         """
         Method to return ingredients of the given product carried by the brand.
@@ -120,31 +125,40 @@ class what2Eat:
         if not self.isValidBrand(brandName): 
             return False
         else:
-            allBrandProducts = self.getAllProducts(brandName)
-            if productName in allBrandProducts:
-                return True
-            else:
-                return False 
-        
-if __name__ == '__main__': 
+            return False 
+                           
+    def printHelpPage():
 
-    my_parser = argparse.ArgumentParser()
-    my_parser.add_argument('functionName', help='functionName')
-    my_parser.add_argument('-b','--brandName', help= 'brandName')
-    my_parser.add_argument('-p','--productName', help= 'productName')
-    my_parser.add_argument('-f','--fileName', help= 'fileName', default='SmallProductSheet.csv')
-    args = my_parser.parse_args()
-    sampleData = what2Eat(args.fileName)
+        helpStatement =  "Welcome to What2Eat!\nPlease refer to the following instructions to navigate our interface.\n In order to use the USDA food database we reccomend you use SmallProductSheet.csv for your file.\n To look up products by brand enter the following into the terminal:                   python what2Eat.py getAllProducts [brandname] [fileName]\n to look up the nutrients of a specific product enter the following into the terminal: python what2Eat.py getIngredients [brandname] [productName] [fileName]\n"
+        return helpStatement
+    # if __name__ == '__main__':    
+        #TESTING STUFF - uncomment the line(s) you want to test. 
+        #print(returnBrands())
+        #print(getAllProducts("FRESH & EASY"))
+        #print(getProductIngredients('FRESH & EASY', 'BARBECUE SAUCE'))
+        #print(containsIngredient('molasses', 'FRESH & EASY', 'BARBECUE SAUCE'))
 
-    if args.functionName == 'getProductIngredients':
-        print(sampleData.getProductIngredients(args.brandName, args.productName))
-        # command line example
-        # python3 what2Eat.py getProductIngredients -b 'FRESH & EASY' -p 'BARBECUE SAUCE'
+dataFromSmallProductSheet = what2Eat("SmallProductSheet.csv")
 
-    elif args.functionName == 'getAllProducts':
-        print(sampleData.getAllProducts(args.brandName))
-        # command line example
-        # python3 what2Eat.py getAllProducts -b 'FRESH & EASY' 
+#print(dataFromSmallProductSheet.brandCarriesProduct('FRESH & EASY', 'BARBECUE SAUCE'))
+if len(sys.argv) > 1:
+    if sys.argv[1] == 'getProductIngredients':
+        brandName = sys.argv[2]
+        productName = sys.argv[3].upper()
+        fileName = sys.argv[4]
+        sampleData = what2Eat(fileName)
+        print(sampleData.getProductIngredients(brandName, productName))
+
+    elif sys.argv[1] == 'getAllProducts':
+        brandName = sys.argv[2]
+        fileName = sys.argv[3]
+        sampleData = what2Eat(fileName)
+        print(sampleData.getAllProducts(brandName))
+
+    elif sys.argv[1] == 'help':
+        text = printHelpPage()
+
 
     else:
         print("Incorrect argument(s)")
+

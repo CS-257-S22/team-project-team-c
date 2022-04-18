@@ -2,7 +2,7 @@ import unittest
 from what2Eat import *
 
 
-'''Testing fucntions pertaining to the'ingredient' feature.'''
+'''Testing functions pertaining to the'ingredient' feature.'''
 
 class TestIngredients(unittest.TestCase):
     'TESTING BASIC FUNCTIONALITY'
