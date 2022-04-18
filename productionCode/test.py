@@ -1,5 +1,5 @@
 import unittest
-import what2eat
+import what2Eat
 
 class TestWhat2Eat(unittest.TestCase):
     def test_compareNutrients(self):

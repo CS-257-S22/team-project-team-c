@@ -3,7 +3,22 @@ feature i: ingredients
 foods.py -i 'tomato' #returns a random product that contains tomatoes in its ingredient list
 
 
-Sample function signautres:
+Function Signatures: 
+- returnBrands()
+    - Input: N/A
+    - Output: Returns the brandname that is stored as an instance variable in the what2Eat class 
+
+- isValidBrand (self, brandName) Helper method to check if the user input is a brand that exists within our database. Iterates through brand list and searches for brandName. 
+    - Input: brandName you are checking for 
+    - Output: Returns true if brandName exists and false if it does not. 
+    
+- getAllProducts(self, brandName): Method to search through file and retrieve all the products for a given brand. 
+    - Input: brandName of product subsection you are looking for
+    - Output: a nested list of products that you are looking for. This list includes all the information (ingredients, manufacturer, etc.)  of the food product. 
+    
+    
+
+
 - compareNutrients(product1, product2, brand1, brand2, nutrient):
     - Input: two products and the nutrient we want to compare across
     - Returns: the nutrition values for the two products as a list 
@@ -23,12 +38,14 @@ Sample function signautres:
     >>> hasIngredient("garlic", "Roased Garlic Hummus", "Target")
     >>> True
     
- List of methods: (for my purposes 
+ List of methods
  
 def load_csv_file(filename):
-def returnBrands(fileName):
-def isValidBrand(brandName):
-def getAllProducts(brandName):
+    - 
+
+def returnBrands(fileName):x
+def isValidBrand(brandName):x
+def getAllProducts(brandName):x
 def getProductIngredients(brandName, productName):
 def containsIngredient(ingredient, brandName, productName):
 def brandCarriesProduct(brandName, productName): 
