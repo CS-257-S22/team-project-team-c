@@ -5,24 +5,6 @@ from unittest import TestCase, mock
 
 
 class TestWhat2Eat(unittest.TestCase):
-    # def test_returnBrands(self):
-    #     """Testing the helper function returnBrands. The test function uses a small 
-    #     sample of data to compare results
-    #     Written by Morgan"""
-    #     testBrandData = [("product_name","brand_name","ingredients"),
-    #                     ('pizza', 'brand 1', 'flour, cheese'),
-    #                     ('cereal', 'brand 2', 'oats, sugar, vitamin B'),
-    #                     ('pot pie', 'brand 3', 'flour, beef, potato, onion')]
-        
-    #     with mock.patch('what2Eat.what2Eat.load_csv_file') as mockLoad:
-    #         mockLoad.return_value = testBrandData
-    #         brands = what2Eat('bogus.csv').returnBrands()
-
-    #     accurateListOfBrands = ["brand 1","brand 2", "brand 3"]
-    #     for brand in accurateListOfBrands:
-    #         self.assertIn(brand, brands)
-    #     self.assertNotIn("pot pie", brands)
-        
     def setUp(self):
         """Set the files used to test functions
         Written by Kana"""
