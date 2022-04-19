@@ -1,15 +1,41 @@
 import unittest
 from webbrowser import get
 from what2Eat import *
+from unittest import TestCase, mock
 
 
 class TestWhat2Eat(unittest.TestCase):
+    # def test_returnBrands(self):
+    #     """Testing the helper function returnBrands. The test function uses a small 
+    #     sample of data to compare results
+    #     Written by Morgan"""
+    #     testBrandData = [("product_name","brand_name","ingredients"),
+    #                     ('pizza', 'brand 1', 'flour, cheese'),
+    #                     ('cereal', 'brand 2', 'oats, sugar, vitamin B'),
+    #                     ('pot pie', 'brand 3', 'flour, beef, potato, onion')]
+        
+    #     with mock.patch('what2Eat.what2Eat.load_csv_file') as mockLoad:
+    #         mockLoad.return_value = testBrandData
+    #         brands = what2Eat('bogus.csv').returnBrands()
+
+    #     accurateListOfBrands = ["brand 1","brand 2", "brand 3"]
+    #     for brand in accurateListOfBrands:
+    #         self.assertIn(brand, brands)
+    #     self.assertNotIn("pot pie", brands)
+        
     def setUp(self):
         """Set the files used to test functions
         Written by Kana"""
         self.defaultSampleData = what2Eat("SmallProductSheet.csv")
         self.emptySampleData = what2Eat("emptyFileForTesting.csv")
         self.tenSampleData = what2Eat("10LinesForTesting.csv")
+
+    def test_load_csv_file(self):
+        """Testing if the function load_csv_file returns a nested list
+        Written by Kana"""
+        result = self.defaultSampleData.load_csv_file()
+        ifNested = any(isinstance(row, list) for row in result)
+        self.assertTrue(ifNested)
 
     def test_load_csv_file_firstRow(self):
         """Testing the function loadCSVFile with the first row of CSV file information 
@@ -26,6 +52,92 @@ class TestWhat2Eat(unittest.TestCase):
         lastRow = productData[len(productData)-1]
         testData = ["FRESH & EASY, PASTA SAUCE WITH IMPORTED ITALIAN TOMATOES & OLIVE OIL","FRESH & EASY","PLUM TOMATOES, TOMATO PASTE, OLIVE OIL, BLACK OLIVES (BLACK OLIVES, WATER, SALT, FERROUS GLUCONATE), CAPERS (CAPERS, DISTILLED VINEGAR, SALT, WATER), KALAMATA OLIVES (KALAMATA OLIVES, WATER, SALT, RED WINE VINEGAR, EXTRA VIRGIN OLIVE OIL), GARLIC, ANCHOVY PASTE (ANCHOVIES, SALT, OLIVE OIL, ACETIC ACID), PARSLEY, BASIL, ONIONS, WHITE PEPPER, CRUSHED RED PEPPERS, OREGANO."]
         self.assertEqual(testData,lastRow)
+    
+    def test_returnBrands(self):
+        """Testing the helper function returnBrands. The test function uses a small 
+        sample of data to compare results
+        Written by Morgan"""
+        testBrandData = [("product_name","brand_name","ingredients"),
+                        ('pizza', 'brand 1', 'flour, cheese'),
+                        ('cereal', 'brand 2', 'oats, sugar, vitamin B'),
+                        ('pot pie', 'brand 3', 'flour, beef, potato, onion')]
+        with mock.patch('what2Eat.what2Eat.load_csv_file') as mockLoad:
+            mockLoad.return_value = testBrandData
+            brands = what2Eat('bogus.csv').returnBrands()
+        accurateListOfBrands = ["brand 1","brand 2", "brand 3"]
+        for brand in accurateListOfBrands:
+            self.assertIn(brand, brands)
+        self.assertNotIn("pot pie", brands)
+
+    def test_returnBrandsOnlyBrands(self):
+        """Testing that the helper function returnBrands only returns brands. 
+        The test function uses a small sample of data to compare results.
+        Written by Morgan"""        
+        testBrandData = [("product_name","brand_name","ingredients"),
+                        ('pizza', 'brand 1', 'flour, cheese'),
+                        ('cereal', 'brand 2', 'oats, sugar, vitamin B'),
+                        ('pot pie', 'brand 3', 'flour, beef, potato, onion')]
+        with mock.patch('what2Eat.what2Eat.load_csv_file') as mockLoad:
+            mockLoad.return_value = testBrandData
+            brands = what2Eat('bogus.csv').returnBrands()
+        self.assertNotIn('pizza', brands)
+        self.assertNotIn('brand_name', brands) 
+
+    def test_returnBrandsSingleInstanceOfBrands(self):
+        """Testing that the helper function returnBrands only returns one instance of each brand. 
+        The test function uses a small sample of data to compare results.
+        Written by Morgan"""
+        testBrandData = [('pizza', 'brand 1', 'flour, cheese'),
+                        ('cereal', 'brand 2', 'oats, sugar, vitamin B'),
+                        ('pot pie', 'brand 1', 'flour, beef, potato, onion')]
+        with mock.patch('what2Eat.what2Eat.load_csv_file') as mockLoad:
+            mockLoad.return_value = testBrandData
+            brands = what2Eat('bogus.csv').returnBrands()
+        self.assertEqual(1, brands.count('brand 1'))
+
+    def test_returnBrandsNoEmptyStrings(self):
+        """Testing that the helper function returnBrands does not return any empty strings. 
+        The test function uses a small sample of data to compare results.
+        Written by Morgan"""
+        testBrandData = [('pizza', 'brand 1', 'flour, cheese'),
+                        ('cereal', '', 'oats, sugar, vitamin B'),
+                        ('pot pie', 'brand 3', 'flour, beef, potato, onion')]
+        with mock.patch('what2Eat.what2Eat.load_csv_file') as mockLoad:
+            mockLoad.return_value = testBrandData
+            brands = what2Eat('bogus.csv').returnBrands()
+        self.assertNotIn('', brands)
+        self.assertEqual(2, len(brands))
+
+    def test_returnBrandsEmptyList(self):
+        """Testing that the helper function returnBrands returns an empty list if the passed
+        list has no data beyond column lables. The test function uses a small sample of data 
+        to compare results.
+        Written by Morgan"""
+        testBrandData = [("product_name","brand_name","ingredients")]
+        with mock.patch('what2Eat.what2Eat.load_csv_file') as mockLoad:
+            mockLoad.return_value = testBrandData
+            brands = what2Eat('bogus.csv').returnBrands()   
+        self.assertEqual([], brands)
+
+    def test_returnBrandsEmptyFile(self):
+        """Testing that the helper function returnBrands returns an empty list if the file is 
+        totally empty. The test function uses a small sample of data to compare results.
+        Written by Morgan"""
+        testBrandData = []
+        with mock.patch('what2Eat.what2Eat.load_csv_file') as mockLoad:
+            mockLoad.return_value = testBrandData
+            brands = what2Eat('bogus.csv').returnBrands()
+        self.assertEqual([], brands)
+
+    def test_returnBrandsFileNotFound(self):
+        """Testing that the helper function returnBrands raises a FileNotFoundError if
+        the file passed doesn't exist. 
+        The test function uses a small sample of data to compare results.
+        Written by Morgan"""
+        with mock.patch("what2Eat.what2Eat.load_csv_file") as mockLoad:
+            mockLoad.side_effect = FileNotFoundError
+            with self.assertRaises(FileNotFoundError):
+                brands = what2Eat('bogus.csv').returnBrands()
 
     def test_is_Valid_Brand_True(self):
         """Testing if the function is_Valid_Brand returns True when takeing in real brand
@@ -68,45 +180,5 @@ class TestWhat2Eat(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-        
-        
-    # def test_load_csv_file(self):
-    #     """Testing the function loadCSVFile 
-    #     Written by Alice"""
-    #     testFile = what2Eat("SmallProductSheet.csv")
-    #     productData = testFile.load_csv_file()
-    #     firstRow = productData[1]
-    #     testData = ["MOCHI ICE CREAM BONBONS","G. T. Japan, Inc.","ICE CREAM INGREDIENTS: MILK, CREAM, SUGAR, STRAWBERRIES (STRAWBERRIES, SUGAR), CORN SYRUP SOLIDS, SKIM MILK, WHEY, NATURAL FLAVOR, GUAR GUM, MONO & DIGLYCERIDES, BEET JUICE AND BEET POWDER (FOR COLOR), CELLULOSE GUM, LOCUST BEAN GUM, CARRAGEENAN. COATING INGREDIENTS: SUGAR, WATER, RICE FLOUR, TREHALOSE, EGG WHITES, BEET JUICE AND BEET POWDER (FOR COLOR), DUSTED WITH CORN & POTATO STARCH"]
-    #     self.assertEqual(testData, firstRow)
-
-# class TestHasIngredients(unittest.TestCase):
-#     def test_has_ingredient(self):
-#         """Testing the function hasIngredients
-#         written by Isabella """
-#         result = hasIngredient("garlic".upper(), "Roasted Garlic Hummus", "Target")
-#         self.assertEqual(result, True)
-        
-#        """The following Tests were written by Alice """"
-# class TestLoadCSVFile(unittest.TestCase):
-#     def test_load_csv_file(self):
-#         """Testing the function loadCSVFile written by Alice"""
-#         productData = load_csv_file("SmallProductSheet.csv")
-#         testData = [["MOCHI ICE CREAM BONBONS"],["G. T. Japan", "Inc."],["MILK, CREAM, SUGAR"]]
-       
-#         self.assertEqual(productData, testData)
-
-# class TestValidBrandName(unittest.TestCase):
-#     def test_is_Valid_Brand_True(self):
-#         """Testing the function is_Valid_Brand written by Alice. This test takes in real brand and isValidBrand is expected to
-#         return true. """
-       
-#         validBrandBool = isValidBrand("G. T. Japan, Inc")
-#         self.assertEqual(validBrandBool, True)
-
-#     def test_is_Valid_Brand_False(self):
-#         """Testing the function is_Valid_Brand written by Alice. This test makes
-#          sure that method returns false when the brand is invalid"""
-#         invalidBrandBool = validBrand("G. T. China, Inc")
-#         self.assertEqual(invalidBrandBool, False)
 
         
