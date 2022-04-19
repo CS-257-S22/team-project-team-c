@@ -8,7 +8,7 @@ class TestWhat2Eat(unittest.TestCase):
         """Set the files used to test functions
         Written by Kana"""
         self.defaultSampleData = what2Eat("SmallProductSheet.csv")
-        self.EmptySampleData = what2Eat("emptyFileForTesting.csv")
+        self.emptySampleData = what2Eat("emptyFileForTesting.csv")
         self.tenSampleData = what2Eat("10LinesForTesting.csv")
 
     def test_load_csv_file_firstRow(self):
@@ -55,7 +55,7 @@ class TestWhat2Eat(unittest.TestCase):
     def test_getIngredients_from_empty_file(self):
         """Testing if the function getProductIngredients returns None when attempting to retreive ingredients from an empty file 
         Written by Isabella"""
-        ingredients = self.EmptySampleData.getProductIngredients("brand", "product")
+        ingredients = self.emptySampleData.getProductIngredients("brand", "product")
         self.assertEqual(ingredients, None)
     
     def test_getIngredients_invalid_brand(self):
