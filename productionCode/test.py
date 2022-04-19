@@ -16,7 +16,7 @@ class TestHasIngredients(unittest.TestCase):
         result = hasIngredient("garlic".upper(), "Roasted Garlic Hummus", "Target")
         self.assertEqual(result, True)
         
-       """The following Tests were written by Alice """"
+       """The following Tests were written by Alice """
 class TestLoadCSVFile(unittest.TestCase):
     def test_load_csv_file(self):
         """Testing the function loadCSVFile written by Alice"""

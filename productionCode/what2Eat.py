@@ -38,7 +38,8 @@ class what2Eat:
             brand = row[1]
             if brand and brand not in allBrands: 
                 allBrands.append(brand)
-        allBrands.remove('brand_name') #remove the column name   
+        if 'brand_name' in allBrands:
+            allBrands.remove('brand_name') #remove the column name   
         return allBrands 
 
     def isValidBrand(self, brandName):
