@@ -3,8 +3,6 @@ from what2Eat import *
 
 
 '''Testing functions pertaining to the'ingredient' feature.'''
-
-#Global variables
 sampleData = what2Eat("SmallProductSheet.csv")
 testData = sampleData.load_csv_file()
 
@@ -27,7 +25,7 @@ class TestIngredients(unittest.TestCase):
         firstLine = testData[0]
         self.assertEqual(["product_name","brand_name","ingredients"], firstLine)
     
-    def test_csv_correct_format(self): 
+    def test_csv_file_has_ingredients(self): 
         testLine = testData[2]
         self.assertEqual(testLine, ["CHIPOTLE BARBECUE SAUCE", "FRESH & EASY","WATER, SUGAR, TOMATO PASTE, MOLASSES, DISTILLED VINEGAR, CONTAINS 2% OR LESS OF: CORN STARCH, SALT, DRIED CHIPOTLE PEPPER, NATURAL SMOKE FLAVOR, MUSTARD FLOUR, DRIED GARLIC, DRIED ONION, SPICES."])
         
