@@ -73,7 +73,6 @@ class what2Eat:
                     productList.append(row[0])
             return productList
 
-
     '''
     Input: brand and product
     Returns: the list of ingredients that the given product contains 
@@ -104,6 +103,9 @@ class what2Eat:
         """
         if not self.isValidBrand(brandName): 
             return False
+        
+        elif not self.brandCarriesProduct(brandName, productName):
+            return False
         elif not self.brandCarriesProduct(brandName, productName):
             return False
         else:
@@ -112,6 +114,8 @@ class what2Eat:
                 return True
             else:
                 return False
+
+       
 
     def brandCarriesProduct(self, brandName, productName): 
         """
@@ -125,17 +129,21 @@ class what2Eat:
         if not self.isValidBrand(brandName): 
             return False
         else:
-            return False 
-                           
-    
-    # if __name__ == '__main__':    
-        #TESTING STUFF - uncomment the line(s) you want to test. 
-        #print(returnBrands())
-        #print(getAllProducts("FRESH & EASY"))
-        #print(getProductIngredients('FRESH & EASY', 'BARBECUE SAUCE'))
-        #print(containsIngredient('molasses', 'FRESH & EASY', 'BARBECUE SAUCE'))
+            allBrandProducts = self.getAllProducts(brandName)
+            if productName in allBrandProducts:
+                return True
+            else:
+                return False 
+        
+if __name__ == '__main__': 
 
-dataFromSmallProductSheet = what2Eat("SmallProductSheet.csv")
+    my_parser = argparse.ArgumentParser(description="Welcome to What2Eat!\n Please refer to the following instructions to navigate our interface.\n In order to use the USDA food database we recommend you use SmallProductSheet.csv for your file.\n To look up products by brand enter the following into the terminal:                   python what2Eat.py getAllProducts [brandname] [fileName]\n to look up the nutrients of a specific product enter the following into the terminal: python what2Eat.py getIngredients [brandname] [productName] [fileName]\n")
+    my_parser.add_argument('functionName', help='the name of the function you want to use')
+    my_parser.add_argument('-b','--brandName', help= 'the name of the brand you want to look up (should be a string)')
+    my_parser.add_argument('-p','--productName', help= 'the name of product you want to look up (should be a string)')
+    my_parser.add_argument('-f','--fileName', help= 'the file you want to search in (default is SmallProductSheet.csv)', default='SmallProductSheet.csv')
+    args = my_parser.parse_args()
+    sampleData = what2Eat(args.fileName)
 
 #print(dataFromSmallProductSheet.brandCarriesProduct('FRESH & EASY', 'BARBECUE SAUCE'))
 if len(sys.argv) > 1:
