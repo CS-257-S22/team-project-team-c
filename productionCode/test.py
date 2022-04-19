@@ -11,6 +11,34 @@ class TestWhat2Eat(unittest.TestCase):
         self.EmptySampleData = what2Eat("emptyFileForTesting.csv")
         self.tenSampleData = what2Eat("10LinesForTesting.csv")
 
+    def test_load_csv_file_firstRow(self):
+        """Testing the function loadCSVFile with the first row of CSV file information 
+        Written by Alice"""
+        productData = self.defaultSampleData.load_csv_file()
+        firstRow = productData[1]
+        testData = ["MOCHI ICE CREAM BONBONS","G. T. Japan, Inc.","ICE CREAM INGREDIENTS: MILK, CREAM, SUGAR, STRAWBERRIES (STRAWBERRIES, SUGAR), CORN SYRUP SOLIDS, SKIM MILK, WHEY, NATURAL FLAVOR, GUAR GUM, MONO & DIGLYCERIDES, BEET JUICE AND BEET POWDER (FOR COLOR), CELLULOSE GUM, LOCUST BEAN GUM, CARRAGEENAN. COATING INGREDIENTS: SUGAR, WATER, RICE FLOUR, TREHALOSE, EGG WHITES, BEET JUICE AND BEET POWDER (FOR COLOR), DUSTED WITH CORN & POTATO STARCH"]
+        self.assertEqual(testData, firstRow)
+
+    def test_load_csv_file_lastRow(self): 
+        """Testing the function loadCSVFile with the last row of CSV file information 
+        Written by Alice"""
+        productData = self.defaultSampleData.load_csv_file()
+        lastRow = productData[len(productData)-1]
+        testData = ["FRESH & EASY, PASTA SAUCE WITH IMPORTED ITALIAN TOMATOES & OLIVE OIL","FRESH & EASY","PLUM TOMATOES, TOMATO PASTE, OLIVE OIL, BLACK OLIVES (BLACK OLIVES, WATER, SALT, FERROUS GLUCONATE), CAPERS (CAPERS, DISTILLED VINEGAR, SALT, WATER), KALAMATA OLIVES (KALAMATA OLIVES, WATER, SALT, RED WINE VINEGAR, EXTRA VIRGIN OLIVE OIL), GARLIC, ANCHOVY PASTE (ANCHOVIES, SALT, OLIVE OIL, ACETIC ACID), PARSLEY, BASIL, ONIONS, WHITE PEPPER, CRUSHED RED PEPPERS, OREGANO."]
+        self.assertEqual(testData,lastRow)
+
+    def test_is_Valid_Brand_True(self):
+        """Testing if the function is_Valid_Brand returns True when takeing in real brand
+        Written by Alice."""
+        validBrandBool = self.defaultSampleData.isValidBrand("G. T. Japan, Inc.")
+        self.assertEqual(validBrandBool, True)
+
+    def test_is_Valid_Brand_False(self):
+        """Testing if the function is_Valid_Brand returns True when takeing in invalid brand
+        Written by Alice."""
+        invalidBrandBool = self.defaultSampleData.isValidBrand("G. T. China, Inc.")
+        self.assertEqual(invalidBrandBool, False)
+
     def test_getIngredients(self):
         """Testing if the function getProductIngredients returns correct ingredients 
         Written by Isabella"""
@@ -35,6 +63,8 @@ class TestWhat2Eat(unittest.TestCase):
         Written by Isabella"""
         ingredients = self.defaultSampleData.getProductIngredients("family fare", "barbecue sauce")
         self.assertEqual(ingredients, None)
+
+    
 
 if __name__ == '__main__':
     unittest.main()
