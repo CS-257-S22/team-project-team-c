@@ -5,8 +5,8 @@ from what2Eat import *
 '''The following tests pertain to the 'getIngredient' feature and its helper functions.'''
 
 #Global variables
-sampleData1 = what2Eat("SmallProductSheet.csv")
-sampleData2 = what2Eat("emptyFileForTesting.csv")
+sampleData1 = ProductData("SmallProductSheet.csv")
+sampleData2 = ProductData("emptyFileForTesting.csv")
 testData1 = sampleData1.load_csv_file()
 testData2 = sampleData2.load_csv_file()
 

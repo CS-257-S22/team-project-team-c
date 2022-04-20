@@ -5,10 +5,10 @@ import csv
 import argparse
 from pkg_resources import require
 
-class what2Eat:
+class ProductData:
     def __init__(self, fileName):
         """
-        what2Eat Class Constructor to initialize the object.
+        Product Data Class Constructor to initialize the object.
         Args: 
             fileName (str): the name of the file (should be .csv format)
         """

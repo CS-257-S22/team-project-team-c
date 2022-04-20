@@ -5,7 +5,7 @@ from what2Eat import *
 class TestIngredient(unittest.TestCase):
     def setUp(self):
         """Set the file used to test functions"""
-        self.sampleData = what2Eat("SmallProductSheet.csv")
+        self.sampleData = ProductData("SmallProductSheet.csv")
 
     def test_load_csv_file(self):
         """Testing if the function load_csv_file returns a nested list"""
