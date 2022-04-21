@@ -1,5 +1,5 @@
 from unittest import TestCase, mock
-from what2Eat import what2Eat
+from what2eat import ProductData
 
 """Test suite to test the what2Eat method returnBrands
 Uses the mock object library https://docs.python.org/3/library/unittest.mock.html
@@ -16,9 +16,9 @@ class TestGetAllProducts(TestCase):
                         ('cereal', 'brand 2', 'oats, sugar, vitamin B'),
                         ('pot pie', 'brand 3', 'flour, beef, potato, onion')]
         
-        with mock.patch('what2Eat.what2Eat.load_csv_file') as mockLoad:
+        with mock.patch('what2Eat.ProductData.load_csv_file') as mockLoad:
             mockLoad.return_value = testBrandData
-            brands = what2Eat('bogus.csv').returnBrands()
+            brands = ProductData('bogus.csv').returnBrands()
 
         accurateListOfBrands = ["brand 1","brand 2", "brand 3"]
         for brand in accurateListOfBrands:
@@ -34,9 +34,9 @@ class TestGetAllProducts(TestCase):
                         ('cereal', 'brand 2', 'oats, sugar, vitamin B'),
                         ('pot pie', 'brand 3', 'flour, beef, potato, onion')]
         
-        with mock.patch('what2Eat.what2Eat.load_csv_file') as mockLoad:
+        with mock.patch('what2Eat.ProductData.load_csv_file') as mockLoad:
             mockLoad.return_value = testBrandData
-            brands = what2Eat('bogus.csv').returnBrands()
+            brands = ProductData('bogus.csv').returnBrands()
         self.assertNotIn('pizza', brands)
         self.assertNotIn('brand_name', brands) 
 
@@ -62,9 +62,9 @@ class TestGetAllProducts(TestCase):
                         ('cereal', '', 'oats, sugar, vitamin B'),
                         ('pot pie', 'brand 3', 'flour, beef, potato, onion')]
         
-        with mock.patch('what2Eat.what2Eat.load_csv_file') as mockLoad:
+        with mock.patch('what2Eat.ProductData.load_csv_file') as mockLoad:
             mockLoad.return_value = testBrandData
-            brands = what2Eat('bogus.csv').returnBrands()
+            brands = ProductData('bogus.csv').returnBrands()
         self.assertNotIn('', brands)
         self.assertEqual(2, len(brands))
 
@@ -75,9 +75,9 @@ class TestGetAllProducts(TestCase):
         Written by Morgan"""
         testBrandData = [("product_name","brand_name","ingredients")]
 
-        with mock.patch('what2Eat.what2Eat.load_csv_file') as mockLoad:
+        with mock.patch('what2Eat.ProductData.load_csv_file') as mockLoad:
             mockLoad.return_value = testBrandData
-            brands = what2Eat('bogus.csv').returnBrands()
+            brands = ProductData('bogus.csv').returnBrands()
         
         self.assertEqual([], brands)
 
@@ -87,9 +87,9 @@ class TestGetAllProducts(TestCase):
         Written by Morgan"""
         testBrandData = []
 
-        with mock.patch('what2Eat.what2Eat.load_csv_file') as mockLoad:
+        with mock.patch('what2Eat.ProductData.load_csv_file') as mockLoad:
             mockLoad.return_value = testBrandData
-            brands = what2Eat('bogus.csv').returnBrands()
+            brands = ProductData('bogus.csv').returnBrands()
         
         self.assertEqual([], brands)
 
@@ -99,7 +99,7 @@ class TestGetAllProducts(TestCase):
         The test function uses a small sample of data to compare results.
         Written by Morgan"""
         
-        with mock.patch("what2Eat.what2Eat.load_csv_file") as mockLoad:
+        with mock.patch("what2Eat.ProductData.load_csv_file") as mockLoad:
             mockLoad.side_effect = FileNotFoundError
             with self.assertRaises(FileNotFoundError):
-                brands = what2Eat('bogus.csv').returnBrands()
+                brands = ProductData('bogus.csv').returnBrands()
