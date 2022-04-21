@@ -137,7 +137,7 @@ if __name__ == '__main__':
     my_parser.add_argument('-p','--productName', help= 'the name of product you want to look up (should be a string)')
     my_parser.add_argument('-f','--fileName', help= 'the file you want to search in (default is SmallProductSheet.csv)', default='SmallProductSheet.csv')
     args = my_parser.parse_args()
-    sampleData = what2Eat(args.fileName)
+    sampleData = ProductData(args.fileName)
 
     if args.functionName == 'getProductIngredients':
         print(sampleData.getProductIngredients(args.brandName, args.productName))
