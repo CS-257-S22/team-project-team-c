@@ -2,7 +2,7 @@ import unittest
 from webbrowser import get 
 from what2Eat import *
 #Global Variables
-sampleData = what2Eat("SmallProductSheet.csv")
+sampleData = ProductData("SmallProductSheet.csv")
 testData = sampleData.load_csv_file()
 
 
@@ -13,7 +13,7 @@ class TestLoadCSVFile(unittest.TestCase):
    
     def test1_load_csv_file(self):
         """Testing the function loadCSVFile with the first row of CSV file information written by Alice"""
-        testFile = what2Eat("SmallProductSheet.csv")
+        testFile = ProductData("SmallProductSheet.csv")
         productData = testFile.load_csv_file()
         firstRow = productData[1]
         testData = ["MOCHI ICE CREAM BONBONS","G. T. Japan, Inc.","ICE CREAM INGREDIENTS: MILK, CREAM, SUGAR, STRAWBERRIES (STRAWBERRIES, SUGAR), CORN SYRUP SOLIDS, SKIM MILK, WHEY, NATURAL FLAVOR, GUAR GUM, MONO & DIGLYCERIDES, BEET JUICE AND BEET POWDER (FOR COLOR), CELLULOSE GUM, LOCUST BEAN GUM, CARRAGEENAN. COATING INGREDIENTS: SUGAR, WATER, RICE FLOUR, TREHALOSE, EGG WHITES, BEET JUICE AND BEET POWDER (FOR COLOR), DUSTED WITH CORN & POTATO STARCH"]
@@ -22,7 +22,7 @@ class TestLoadCSVFile(unittest.TestCase):
 
     def test2_load_csv_file(self): 
         """Testing the function loadCSVFile with the last row of CSV file information written by Alice"""
-        testFile = what2Eat("SmallProductSheet.csv")
+        testFile = ProductData("SmallProductSheet.csv")
         productData = testFile.load_csv_file()
         lastRow = productData[len(productData)-1]
         testData = ["FRESH & EASY, PASTA SAUCE WITH IMPORTED ITALIAN TOMATOES & OLIVE OIL","FRESH & EASY","PLUM TOMATOES, TOMATO PASTE, OLIVE OIL, BLACK OLIVES (BLACK OLIVES, WATER, SALT, FERROUS GLUCONATE), CAPERS (CAPERS, DISTILLED VINEGAR, SALT, WATER), KALAMATA OLIVES (KALAMATA OLIVES, WATER, SALT, RED WINE VINEGAR, EXTRA VIRGIN OLIVE OIL), GARLIC, ANCHOVY PASTE (ANCHOVIES, SALT, OLIVE OIL, ACETIC ACID), PARSLEY, BASIL, ONIONS, WHITE PEPPER, CRUSHED RED PEPPERS, OREGANO."]

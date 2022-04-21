@@ -1,5 +1,5 @@
 from unittest import TestCase, mock
-from what2eat import ProductData
+from what2Eat import ProductData
 
 """Test suite to test the what2Eat method returnBrands
 Uses the mock object library https://docs.python.org/3/library/unittest.mock.html
@@ -50,7 +50,7 @@ class TestGetAllProducts(TestCase):
         
         with mock.patch('what2Eat.what2Eat.load_csv_file') as mockLoad:
             mockLoad.return_value = testBrandData
-            brands = what2Eat('bogus.csv').returnBrands()
+            brands = ProductData('bogus.csv').returnBrands()
 
         self.assertEqual(1, brands.count('brand 1'))
 
