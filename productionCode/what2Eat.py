@@ -27,7 +27,7 @@ class ProductData:
                 productData.append(line)
         return productData
 
-    def returnBrands(self):
+    def return_brands(self):
         """
         Helper method to return all brands as a list.
         Returns: 
@@ -44,7 +44,7 @@ class ProductData:
             allBrands.remove('brand_name') #remove the column name    
         return allBrands 
 
-    def isValidBrand(self, brandName):
+    def is_valid_brand(self, brandName):
         """
         Helper method to check if user input is a valid brand. Iterates through allbrand list to check. 
         Args: 
@@ -52,7 +52,7 @@ class ProductData:
         Returns: 
             a boolean value that is True if the brand exists and False if it does not. 
         """
-        allBrands = self.returnBrands()
+        allBrands = self.return_brands()
         if brandName in allBrands:
             return True
         else: 
@@ -60,7 +60,7 @@ class ProductData:
             print(allBrands)
             return False
 
-    def getAllProducts(self, brandName):
+    def get_all_products(self, brandName):
         """
         Helper method to return all products carried by the given brand.
         Args:
@@ -68,7 +68,7 @@ class ProductData:
         Returns:
             productList: a list of all products carried by the given brand
         """
-        if self.isValidBrand(brandName):
+        if self.is_valid_brand(brandName):
             productData = self.load_csv_file() #product data continaing name, brand, and ingredients 
             productList = []
             for row in productData: 
@@ -77,7 +77,7 @@ class ProductData:
             return productList
 
 
-    def getProductIngredients(self, brandName, productName):
+    def get_product_ingredients(self, brandName, productName):
         """
         Method to return ingredients of the given product carried by the brand.
         Args:
@@ -91,7 +91,7 @@ class ProductData:
             if row[0] == productName and row[1] == brandName:
                 return row[2].lower() #convert to lower case 
         
-    def containsIngredient(self, ingredient, brandName, productName):
+    def contains_ingredient(self, ingredient, brandName, productName):
         """
         Method to check if the given product carried by the brand contains the user input ingredient
         Args:
@@ -101,20 +101,20 @@ class ProductData:
         Returns:
             a boolean value that is True if the product contains the ingredient and False if it does not. 
         """
-        if not self.isValidBrand(brandName): 
+        if not self.is_valid_brand(brandName): 
             return False
         
-        elif not self.brandCarriesProduct(brandName, productName):
+        elif not self.brand_carries_product(brandName, productName):
             return False
 
         else:
-            ingredients = self.getProductIngredients(brandName, productName)
+            ingredients = self.get_product_ingredients(brandName, productName)
             if ingredient in ingredients:
                 return True
             else:
                 return False
 
-    def brandCarriesProduct(self, brandName, productName): 
+    def brand_carries_product(self, brandName, productName): 
         """
         Method to check if the given brand carries the product 
         Args:
@@ -123,10 +123,10 @@ class ProductData:
         Returns:
             a boolean value that is True if the brand carries the product and False if it does not. 
         """
-        if not self.isValidBrand(brandName): 
+        if not self.is_valid_brand(brandName): 
             return False
         else:
-            allBrandProducts = self.getAllProducts(brandName)
+            allBrandProducts = self.get_all_products(brandName)
             if productName in allBrandProducts:
                 return True
             else:
@@ -142,15 +142,15 @@ if __name__ == '__main__':
     args = my_parser.parse_args()
     sampleData = ProductData(args.fileName)
 
-    if args.functionName == 'getProductIngredients':
-        print(sampleData.getProductIngredients(args.brandName, args.productName))
+    if args.functionName == 'get_product_ingredients':
+        print(sampleData.get_product_ingredients(args.brandName, args.productName))
         # command line example
-        # python3 what2Eat.py getProductIngredients -b 'FRESH & EASY' -p 'BARBECUE SAUCE'
+        # python3 what2Eat.py get_product_ingredients -b 'FRESH & EASY' -p 'BARBECUE SAUCE'
 
-    elif args.functionName == 'getAllProducts':
-        print(sampleData.getAllProducts(args.brandName))
+    elif args.functionName == 'get_all_products':
+        print(sampleData.get_all_products(args.brandName))
         # command line example
-        # python3 what2Eat.py getAllProducts -b 'FRESH & EASY' 
+        # python3 what2Eat.py get_all_products -b 'FRESH & EASY' 
 
     else:
         print("Incorrect argument(s)")
