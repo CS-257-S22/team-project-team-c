@@ -21,37 +21,61 @@ def homepage():
             \n Here is an example: \
             \n http://127.0.0.1:5000/getAllProducts/Target Stores"
     
-@app.route('/getAllProducts/<brandName>', strict_slashes=False)
+@app.route('/get_all_products/<brandName>', strict_slashes=False)
 def display_products(brandName):
     """ Generate a page that returns ingredients
     @param 
         brandName: a brand name that a user want to search with
     @return a list of all products carried by the brand
     """ 
-    return f'{brandName} carries: {sampleData.getAllProducts(brandName)}'
+    return f'{brandName} carries: {sampleData.get_all_products(brandName)}'
     #examples:
     #return str(sampleData.getProductIngredients(brandName, productName))
-    #http://127.0.0.1:5000/getAllProducts/FRESH%20&%20EASY
+    #http://127.0.0.1:5000/get_all_products/FRESH%20&%20EASY
 
-@app.route('/getProductIngredients/<brandName>/<productName>', strict_slashes=False)
+@app.route('/get_product_ingredients/<brandName>/<productName>', strict_slashes=False)
 def display_ingredients(brandName, productName):
-    return f'{productName} from {brandName} contains: {sampleData.getProductIngredients(brandName, productName)}'
-    #http://127.0.0.1:5000/getProductIngredients/FRESH%20&%20EASY/BARBECUE%20SAUCE
+    """ Generate a page that returns ingredients
+    @param 
+        brandName: a brand name that a user want to search with
+        productName: a product name that a user want to search with
+    @return a list of all ingredients of the product
+    """ 
+    return f'{productName} from {brandName} contains: {sampleData.get_product_ingredients(brandName, productName)}'
+    #http://127.0.0.1:5000/get_product_ingredients/FRESH%20&%20EASY/BARBECUE%20SAUCE
 
 
-@app.route('/containsIngredient/<ingredient>/<brandName>/<productName>', strict_slashes=False)
+@app.route('/contains_ingredient/<ingredient>/<brandName>/<productName>', strict_slashes=False)
 def display_contains_ingredient(ingredient, brandName, productName):
-    if sampleData.containsIngredient(ingredient, brandName, productName): 
+    """ Generate a page that tells if a production contains a certain ingredient
+    @param 
+        ingredient: the ingredient 
+        brandName: a brand name that a user want to search with
+        productName: a product name that a user want to search with
+    @return verifies that the product contains the ingredient.
+    For negative instances (invalid brand, invalid product, does not contain ingredient), returns None.  
+    """ 
+    if sampleData.contains_ingredient(ingredient, brandName, productName): 
         return f'{productName} from {brandName} contains {ingredient}'
     else: 
-        return f'{productName} from {brandName} does not contain {ingredient}' 
-        
+        return f'{productName} from {brandName} does not contain {ingredient} or invalid input' 
+
 @app.errorhandler(404)
 def page_not_found(e):
-    return "sorry, wrong format..."
+    """ Generate a page that returns ingredients
+    @param 
+        e: 404 error
+    @return an error statement
+    """ 
+    return "Sorry, wrong format. Go to http://127.0.0.1:5000/ and check the correct format."
 
 @app.errorhandler(500)
 def python_bug(e):
+    """ Generate a page that returns ingredients
+    @param 
+        e: 500 error
+    @return an error statement
+    """ 
     return "Eek, a bug!"
 
 if __name__ == '__main__':
