@@ -72,7 +72,7 @@ class ProductData:
             productList = []
             for row in productData: 
                 if row[1] == brandName:
-                    productList.append(row[0].lower())
+                    productList.append(row[0])
             return productList
 
 
