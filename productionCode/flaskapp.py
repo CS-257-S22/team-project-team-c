@@ -13,13 +13,18 @@ def homepage():
     """ Generate a homepage
     @return a homepage with instructions
     """ 
-    return "You can find all the ingredients of a product by going to http://127.0.0.1:5000/getProductIngredients/[brandName]/[productName]. \
+    return "You can find all the ingredients of a product by going to http://127.0.0.1:5000/get_product_ingredients/[brandName]/[productName]. \
             \n Here is an example: \
-            \n http://127.0.0.1:5000/getProductIngredients/DCI Cheese Company, Inc./GREAT MIDWEST, CRANBERRY CHEDDAR \
+            \n http://127.0.0.1:5000/get_product_ingredients/DCI Cheese Company, Inc./GREAT MIDWEST, CRANBERRY CHEDDAR \
             \n \
-            \n You can also find all products carried by a certain brand by going to http://127.0.0.1:5000/getAllProducts/[brandName] \
+            \n You can also find all products carried by a certain brand by going to http://127.0.0.1:5000/get_all_products/[brandName] \
             \n Here is an example: \
-            \n http://127.0.0.1:5000/getAllProducts/Target Stores"
+            \n http://127.0.0.1:5000/get_all_products/Target Stores \
+            \n You can check if a product contains something by going to http://127.0.0.1:5000/contains_ingredient/[ingredient]/[brandName]/[productName]\
+            \n Here is an example: \
+            \n http://127.0.0.1:5000/contains_ingredient/chickpeas/Target Stores/TRADITIONAL HUMMUS"
+
+    #http://127.0.0.1:5000/
     
 @app.route('/get_all_products/<brandName>', strict_slashes=False)
 def display_products(brandName):
@@ -29,8 +34,7 @@ def display_products(brandName):
     @return a list of all products carried by the brand
     """ 
     return f'{brandName} carries: {sampleData.get_all_products(brandName)}'
-    #examples:
-    #return str(sampleData.getProductIngredients(brandName, productName))
+    #example:
     #http://127.0.0.1:5000/get_all_products/FRESH%20&%20EASY
 
 @app.route('/get_product_ingredients/<brandName>/<productName>', strict_slashes=False)
@@ -42,6 +46,7 @@ def display_ingredients(brandName, productName):
     @return a list of all ingredients of the product
     """ 
     return f'{productName} from {brandName} contains: {sampleData.get_product_ingredients(brandName, productName)}'
+    #examples:
     #http://127.0.0.1:5000/get_product_ingredients/FRESH%20&%20EASY/BARBECUE%20SAUCE
 
 
@@ -59,6 +64,8 @@ def display_contains_ingredient(ingredient, brandName, productName):
         return f'{productName} from {brandName} contains {ingredient}'
     else: 
         return f'{productName} from {brandName} does not contain {ingredient} or invalid input' 
+    #true: http://127.0.0.1:5000/contains_ingredient/chickpeas/Target Stores/TRADITIONAL HUMMUS
+    #false: http://127.0.0.1:5000/contains_ingredient/fake peas/Target Stores/TRADITIONAL HUMMUS
 
 @app.errorhandler(404)
 def page_not_found(e):
