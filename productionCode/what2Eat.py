@@ -38,6 +38,7 @@ class ProductData:
             brand = row[1]
             if brand and brand not in allBrands: 
                 allBrands.append(brand)
+
         if 'brand_name' in allBrands:
             allBrands.remove('brand_name') #remove the column name    
         return allBrands 
@@ -73,6 +74,7 @@ class ProductData:
                 if row[1] == brandName:
                     productList.append(row[0])
             return productList
+
 
     def getProductIngredients(self, brandName, productName):
         """
