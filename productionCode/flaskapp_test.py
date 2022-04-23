@@ -1,6 +1,6 @@
 from flaskapp import *
 import unittest
-import what2Eat
+import what2Eat 
 
 class TestTwoMainFunction(unittest.TestCase):
     def setUp(self):
