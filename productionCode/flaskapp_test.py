@@ -3,8 +3,6 @@ import unittest
 import what2Eat 
 
 class TestTwoMainFunction(unittest.TestCase):
-    #unit test/integration test
-    #if you wanna check if one method works no matter how the helper methods work, you need to create fake data
     def setUp(self):
         """Set an app to test functions
         Written by Kana"""
