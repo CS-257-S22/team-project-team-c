@@ -11,22 +11,24 @@ data = []
 def homepage():
     return "hello, this is the homepage"
     #http://127.0.0.1:5000/
-    
-@app.route('/containsIngredients/<ingredient>/<brandName>/<productName>', strict_slashes=False)
-def check_one_ingredient(ingredient, brandName, productName):
-    if sampleData.containsIngredient(ingredient, brandName, productName): 
-        return f'{productName} from {brandName} contains {ingredient}'
+
+#containsIngredient(self, ingredient, brandName, productName):
+
+# @app.route('/containsIngredients/<ingredient>/<brandName>/<productName>', strict_slashes=False)
+# def check_one_ingredient(ingredient, brandName, productName):
+#     if sampleData.containsIngredient(ingredient, brandName, productName): 
+#         return f'{productName} from {brandName} contains {ingredient}'
         
 @app.route('/getProductIngredients/<brandName>/<productName>', strict_slashes=False)
 def display_ingredients(brandName, productName):
     return f'{productName} from {brandName} contains: {sampleData.getProductIngredients(brandName, productName)}'
     #http://127.0.0.1:5000/getProductIngredients/FRESH%20&%20EASY/BARBECUE%20SAUCE
 
-@app.route('/containsIngredients/<ingredient>/<brandName>/<productName>', strict_slashes=False)
+@app.route('/containsIngredient/<ingredient>/<brandName>/<productName>', strict_slashes=False)
 def check_one_ingredient(ingredient, brandName, productName):
     if sampleData.containsIngredient(ingredient, brandName, productName): 
         return f'{productName} from {brandName} contains {ingredient}'
-
+#http://127.0.0.1:5000/containsIngredient/chickpeas/Target%20Stores/TRADITIONAL%20HUMMUS
 @app.errorhandler(404)
 def page_not_found(e):
     return "sorry, wrong format..."
