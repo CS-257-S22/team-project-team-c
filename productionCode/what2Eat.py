@@ -6,8 +6,21 @@ import csv
 import argparse
 from pkg_resources import require
 
+def load_csv_file(fileName):
+    """
+    Loads information from a .csv file. Each row is represented as a list within a larger list.
+    Returns: 
+        productData: a nested 2D list of product data 
+    """
+    productData = [] #contains product name, brand, and ingredients 
+    with open(fileName, 'r') as data:
+        for line in csv.reader(data):
+            productData.append(line)
+
+    return productData
+
 class ProductData:
-    def __init__(self, fileName):
+    def __init__(self):
         """
         Product Data Class Constructor to initialize the object.
         Args: 
@@ -15,17 +28,7 @@ class ProductData:
         """
         self.fileName = fileName
     
-    def load_csv_file(self):
-        """
-        Loads information from a .csv file. Each row is represented as a list within a larger list.
-        Returns: 
-            productData: a nested 2D list of product data 
-        """
-        productData = [] #contains product name, brand, and ingredients 
-        with open(self.fileName, 'r') as data:
-            for line in csv.reader(data):
-                productData.append(line)
-        return productData
+    
 
     def return_brands(self):
         """
