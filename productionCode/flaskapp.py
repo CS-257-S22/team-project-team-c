@@ -74,7 +74,7 @@ def page_not_found(e):
         e: 404 error
     @return an error statement
     """ 
-    return "Sorry, wrong format. Go to http://127.0.0.1:5000/ and check the correct format."
+    return "404 Page Not Found. Go to http://127.0.0.1:5000/ and check the correct format."
 
 @app.errorhandler(500)
 def python_bug(e):
@@ -83,7 +83,7 @@ def python_bug(e):
         e: 500 error
     @return an error statement
     """ 
-    return "Eek, a bug!"
+    return "500 Page Unavaiable. Go to http://127.0.0.1:5000/ and check the correct format."
 
 if __name__ == '__main__':
     app.run()
