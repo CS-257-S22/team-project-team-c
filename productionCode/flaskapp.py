@@ -7,13 +7,7 @@ from what2Eat import *
 app = Flask(__name__)
 sampleData = ProductData('SmallProductSheet.csv')
 data = []
-@app.route('/')
-
-def homepage():
-    """ Generate a homepage
-    @return a homepage with instructions
-    """ 
-    return "You can find all the ingredients of a product by going to http://127.0.0.1:5000/get_product_ingredients/[brandName]/[productName]. \
+helpMessage = "You can find all the ingredients of a product by going to http://127.0.0.1:5000/get_product_ingredients/[brandName]/[productName]. \
             \n Here is an example: \
             \n http://127.0.0.1:5000/get_product_ingredients/DCI Cheese Company, Inc./GREAT MIDWEST, CRANBERRY CHEDDAR \
             \n \
@@ -23,6 +17,13 @@ def homepage():
             \n You can check if a product contains something by going to http://127.0.0.1:5000/contains_ingredient/[ingredient]/[brandName]/[productName]\
             \n Here is an example: \
             \n http://127.0.0.1:5000/contains_ingredient/chickpeas/Target Stores/TRADITIONAL HUMMUS"
+@app.route('/')
+
+def homepage():
+    """ Generate a homepage
+    @return a homepage with instructions
+    """ 
+    return helpMessage
 
     #http://127.0.0.1:5000/
     
@@ -74,7 +75,7 @@ def page_not_found(e):
         e: 404 error
     @return an error statement
     """ 
-    return "404 Page Not Found. Go to http://127.0.0.1:5000/ and check the correct format."
+    return f'404 Page Not Found. {helpMessage}'
 
 @app.errorhandler(500)
 def python_bug(e):
@@ -83,7 +84,7 @@ def python_bug(e):
         e: 500 error
     @return an error statement
     """ 
-    return "500 Page Unavaiable. Go to http://127.0.0.1:5000/ and check the correct format."
+    return f'500 Page Unavaiable. {helpMessage}'
 
 if __name__ == '__main__':
     app.run()
