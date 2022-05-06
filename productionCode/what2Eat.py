@@ -6,39 +6,37 @@ import csv
 import argparse
 from pkg_resources import require
 
-def load_csv_file(fileName):
-    """
-    Loads information from a .csv file. Each row is represented as a list within a larger list.
-    Returns: 
-        productData: a nested 2D list of product data 
-    """
-    productData = [] #contains product name, brand, and ingredients 
-    with open(fileName, 'r') as data:
-        for line in csv.reader(data):
-            productData.append(line)
-
-    return productData
-
 class ProductData:
-    def __init__(self):
+    def load_csv_file(self):
+        """
+        Loads information from a .csv file. Each row is represented as a list within a larger list.
+        Returns: 
+            productData: a nested 2D list of product data 
+        """
+        productData = [] #contains product name, brand, and ingredients 
+        with open(self.fileName, 'r') as data:
+            for line in csv.reader(data):
+                productData.append(line)
+        return productData
+
+    def __init__(self, fileName):
         """
         Product Data Class Constructor to initialize the object.
         Args: 
             fileName (str): the name of the file (should be .csv format)
         """
         self.fileName = fileName
+        self.productData = self.load_csv_file()
+        #call load csv file here 
     
-    
-
     def return_brands(self):
         """
         Helper method to return all brands as a list.
         Returns: 
             allBrands: a list of all brands
         """
-        productData = self.load_csv_file()
         allBrands = []
-        for row in productData:
+        for row in self.productData:
             brand = row[1]
             if brand and brand not in allBrands: 
                 allBrands.append(brand)
