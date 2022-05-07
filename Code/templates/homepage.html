@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>What 2 Eat</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js">  
+        </script>  
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js">  
+        </script>  
+        <script type="text/javascript" src="script.js">
+        </script>
+        <link rel="stylesheet" href="../static/homepage.css">
+    </head>
+    <body>
+        <h1>What2Eat</h1>
+        <img src="../static/olive-oil.jpg" 
+             alt="olive oil">
+        <div class="description">
+            <p class="welcome">
+                Welcome to What2Eat! <br>
+                With our database, you can find ingredients in the food products you eat every day.
+            </p>
+            <p>
+                <div class = "howToUse">
+                    Type the product you want to look up, or put a space to see the products list
+                </div>
+                <form action="displayingredients" method="post">
+                    <label>Search products...</label>
+                    <input class="searchBox" type="text" id="tags" name="product">
+                    <script> 
+                        $(function() {
+                            var availableTags = [
+                                {% for product in productList %}
+                                    "{{product}}",
+                                {% endfor %}
+                            ];
+                            $( "#tags" ).autocomplete({
+                                source: availableTags
+                            });
+                        } );
+                    </script>
+                    <input class="botton" type="submit" value="Search">
+                </form>
+            </p>
+            <p>
+                <div class = "howToUse">
+                    Or type a brand name to see what products it carries
+                </div>
+                <form action="displayproducts">
+                    <label id="brandLabel">Search brands...</label>
+                    <select name="brandSearch">
+                        {% for brand in brandList %}
+                        <option value="{{brand}}">{{brand}}</option>
+                        {% endfor %}
+                    </select>
+                    <input class="botton" type="submit" value="Search">
+                </form>
+            </p>
+        </div>
+    </body>
+</html>
+

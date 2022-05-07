@@ -61,6 +61,14 @@ class ProductData:
             print(allBrands)
             return False
 
+    #New function for flaskapp written by Kana
+    def get_product_list(self):
+        productData = self.load_csv_file()
+        productList = []
+        for row in productData:
+            productList.append(row[0])
+        return productList
+
     def get_all_products(self, brandName):
         """
         Helper method to return all products carried by the given brand.
@@ -76,7 +84,20 @@ class ProductData:
                 if row[1] == brandName:
                     productList.append(row[0])
             return productList
-
+    #New function for flaskapp written by Kana
+    def get_product_ingredients_product_only(self, productName):
+        """
+        Method to return ingredients of the given product carried by the brand.
+        Args:
+            brandName (str): brand name taken from user 
+            productName (str): product name taken from user
+        Returns:
+            a string of all the ingredients
+        """
+        productData = self.load_csv_file() #product data continaing name, brand, and ingredients 
+        for row in productData:
+            if row[0] == productName:
+                return row[2].lower() #convert to lower case 
 
     def get_product_ingredients(self, brandName, productName):
         """
