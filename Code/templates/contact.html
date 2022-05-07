@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title> Contact Us - What 2 Eat</title>
+
+            
+        <!-- CSS FILES -->   
+        <link href="../static/topnav.css" rel="stylesheet">
+        <link href="../static/stylesheet.css" rel="stylesheet">
+        <link href="../static/contactmessage.css" rel="stylesheet">
+
+    </head>
+    
+    <body>
+        <div class="topnav">
+            <a href ="homepage.html">Home</a>
+            <a href="helppage.html">Help</a>
+            <a href="contact.html">Contact</a>
+        </div>
+
+        <main>
+            <div class="container">
+                <div style="text-align:center">
+                  <h2>Connect With Us</h2>
+                  <p>Leave a message:</p>
+                </div>
+                <div class="row">
+                  <div class="column">
+                    <form action="/action_page.php">
+                      <label for="fname">First Name</label>
+                      <input type="text" id="fname" name="firstname" placeholder="Your name..">
+                      <label for="lname">Last Name</label>
+                      <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+                      <label for="subject">Subject</label>
+                      <textarea id="subject" name="subject" placeholder="Leave a message.." style="height:170px"></textarea>
+                      <input type="submit" value="Submit">
+                    </form>
+                  </div>
+                </div>
+              </div>
+        </main>
+
+    
+    </body>
+</html>
