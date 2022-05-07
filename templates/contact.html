@@ -1,141 +1,46 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <meta name="description" content="">
-        <meta name="author" content="">
-
         <title> Contact Us - What 2 Eat</title>
 
-        <!-- CSS FILES -->        
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">                
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-
-        <link href="css/bootstrap-icons.css" rel="stylesheet">
-
-        <link href="css/tooplate-crispy-kitchen.css" rel="stylesheet">
+            
+        <!-- CSS FILES -->   
+        <link href="../static/topnav.css" rel="stylesheet">
+        <link href="../static/stylesheet.css" rel="stylesheet">
+        <link href="../static/contactmessage.css" rel="stylesheet">
 
     </head>
     
     <body>
-        
-        <nav class="navbar navbar-expand-lg bg-white shadow-lg">
-            <div class="container">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                
-                <a class="navbar-brand" href="index.html">
-                    What 2 Eat
-                </a>
-
-                <div class="d-lg-none">
-                    <button type="button" class="custom-btn btn btn-danger" data-bs-toggle="modal" data-bs-target="#BookingModal">Reservation</button>
-                </div>
-
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav mx-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="homepage.html"> Home </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="helppage.html"> Help </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link active" href="contact.html">Contact</a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="d-none d-lg-block">
-                    <button type="button" class="custom-btn btn btn-danger" data-bs-toggle="modal" data-bs-target="#BookingModal">Reservation</button>
-                </div>
-
-            </div>
-        </nav>
+        <div class="topnav">
+            <a href ="homepage.html">Home</a>
+            <a href="helppage.html">Help</a>
+            <a href="#contact.html">Contact</a>
+        </div>
 
         <main>
-
-            <header class="site-header site-contact-header">
-                <div class="container">
-                    <div class="row">
-
-                        <div class="col-lg-10 col-12 mx-auto">
-                            <h1 class="text-white"> Connect with us</h1>
-
-                            <strong class="text-white">Have questions, suggestions, or running into issues? We are happy to get in touch with you. </strong>
-                        </div>
-
-                    </div>
+            <div class="container">
+                <div style="text-align:center">
+                  <h2>Connect With Us</h2>
+                  <p>Leave a message:</p>
                 </div>
-                
-                <div class="overlay"></div>
-            </header>
-
-            <section class="contact section-padding">
-                <div class="container">
-                    <div class="row">
-
-                        <div class="col-12">
-                            <h2 class="mb-4">Leave a message</h2>
-                        </div>
-
-                        <div class="col-lg-6 col-12">
-                            <form class="custom-form contact-form row" action="#" method="post" role="form">
-                                <div class="col-lg-6 col-6">
-                                    <label for="contact-name" class="form-label">Full Name</label>
-
-                                    <input type="text" name="contact-name" id="contact-name" class="form-control" placeholder="Your Name" required>
-                                </div>
-
-                                <div class="col-lg-6 col-6">
-                                    <label for="contact-phone" class="form-label">Phone Number</label>
-
-                                    <input type="telephone" name="contact-phone" id="contact-phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="form-control" placeholder="123-456-7890">
-                                </div>
-
-                                <div class="col-12">
-                                    <label for="contact-email" class="form-label">Email</label>
-
-                                    <input type="email" name="contact-email" id="contact-email" pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Your Email" required="">
-
-                                    <label for="contact-message" class="form-label">Message</label>
-
-                                    <textarea class="form-control" rows="5" id="contact-message" name="contact-message" placeholder="Your Message"></textarea>
-                                </div>
-
-                                <div class="col-lg-5 col-12 ms-auto">
-                                    <button type="submit" class="form-control">Send</button>
-                                </div>
-                            </form>
-                        </div>
-
-
-            
-
-                    </div>
+                <div class="row">
+                  <div class="column">
+                    <form action="/action_page.php">
+                      <label for="fname">First Name</label>
+                      <input type="text" id="fname" name="firstname" placeholder="Your name..">
+                      <label for="lname">Last Name</label>
+                      <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+                      <label for="subject">Subject</label>
+                      <textarea id="subject" name="subject" placeholder="Leave a message.." style="height:170px"></textarea>
+                      <input type="submit" value="Submit">
+                    </form>
+                  </div>
                 </div>
-            </section>
-
+              </div>
         </main>
 
     
-                
-            </div>
-        </div>
-
-        <!-- JAVASCRIPT FILES -->
-        <script src="js/jquery.min.js"></script>
-        <script src="js/bootstrap.bundle.min.js"></script>
-        <script src="js/custom.js"></script>
-
     </body>
 </html>
