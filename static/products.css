@@ -1,0 +1,19 @@
+body {
+    margin: 5%;
+    background-color: #e5be6462;
+    font-family: 'Inria Serif';
+    letter-spacing: 2.0px;
+}
+h1 {
+    margin-bottom: 5%;
+    font-size: 40px;
+}
+ul {
+    margin-bottom:6%;
+    font-size: 25px;
+    line-height:170%;
+    list-style-type: circle;
+}
+a {
+    font-size: 20px;
+}
