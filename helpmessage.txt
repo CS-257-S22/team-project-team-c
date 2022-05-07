@@ -1,0 +1,9 @@
+You can find all the ingredients of a product by going to http://127.0.0.1:5000/get_product_ingredients/[brandName]/[productName]. \
+Here is an example: 
+http://127.0.0.1:5000/get_product_ingredients/DCI Cheese Company, Inc./GREAT MIDWEST, CRANBERRY CHEDDAR 
+You can also find all products carried by a certain brand by going to http://127.0.0.1:5000/get_all_products/[brandName] 
+Here is an example: 
+http://127.0.0.1:5000/get_all_products/Target Stores 
+You can check if a product contains something by going to http://127.0.0.1:5000/contains_ingredient/[ingredient]/[brandName]/[productName]\
+Here is an example: 
+http://127.0.0.1:5000/contains_ingredient/chickpeas/Target Stores/TRADITIONAL HUMMUS"
