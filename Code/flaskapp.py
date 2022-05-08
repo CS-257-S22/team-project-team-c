@@ -24,10 +24,16 @@ def homepage():
     """ Generate a homepage
     @return a homepage with instructions
     """ 
-    
     return render_template('homepage.html', productList=database.get_product_list(), brandList=database.return_brands())
-
     #http://127.0.0.1:5000/
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
+
+@app.route('/help')
+def help():
+    return render_template('help.html')
     
 @app.route('/displayproducts')
 def display_products():
@@ -44,33 +50,9 @@ def display_ingredients():
     """ 
     product = (request.form['product'])
     rawIngredientsData = database.get_product_ingredients_product_only(product)
-    # for index in range(len(rawIngredientsData)):
-    #     if rawIngredientsData[index] == '(': 
-    #         for chInside in rawIngredientsData[index:]:
-    #             if chInside == ',':
-    #                 chInside = '/'
-    #             elif chInside == ')':
-    #                 break
-    ingredientList = rawIngredientsData.split(',')
-    return render_template('ingredients.html', product=product, ingredients=ingredientList)
-
-
-# @app.route('/contains_ingredient/<ingredient>/<brandName>/<productName>', strict_slashes=False)
-# def display_contains_ingredient(ingredient, brandName, productName):
-#     """ Generate a page that tells if a production contains a certain ingredient
-#     @param 
-#         ingredient: the ingredient 
-#         brandName: a brand name that a user want to search with
-#         productName: a product name that a user want to search with
-#     @return verifies that the product contains the ingredient.
-#     For negative instances (invalid brand, invalid product, does not contain ingredient), returns None.  
-#     """ 
-#     if sampleData.contains_ingredient(ingredient, brandName, productName): 
-#         return f'{productName} from {brandName} contains {ingredient}'
-#     else: 
-#         return f'{productName} from {brandName} does not contain {ingredient} or invalid input' 
-#     #true: http://127.0.0.1:5000/contains_ingredient/chickpeas/Target Stores/TRADITIONAL HUMMUS
-#     #false: http://127.0.0.1:5000/contains_ingredient/fake peas/Target Stores/TRADITIONAL HUMMUS
+    intredientList = rawIngredientsData.split(",")
+    # intredientList = ProductData.remove_comma(rawIngredientsData)
+    return render_template('ingredients.html', product=product, ingredients=intredientList)
 
 @app.errorhandler(404)
 def page_not_found(e):

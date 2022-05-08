@@ -84,6 +84,21 @@ class ProductData:
                 if row[1] == brandName:
                     productList.append(row[0])
             return productList
+
+    #New function for flaskapp written by Kana
+    # def remove_comma(String):
+    #     newList = list(String)
+    #     for index in range(len(newList)):
+    #         if newList[index] == '(': 
+    #             for i in range(index, len(newList)):
+    #                 if newList[i] == ',':
+    #                     newList[i] = ' /'
+    #                 elif newList[i] == ')':
+    #                     break
+    #         newData = "".join(newList)
+    #         newData = newData.split(",")
+    #     return newData
+
     #New function for flaskapp written by Kana
     def get_product_ingredients_product_only(self, productName):
         """
@@ -98,6 +113,8 @@ class ProductData:
         for row in productData:
             if row[0] == productName:
                 return row[2].lower() #convert to lower case 
+
+
 
     def get_product_ingredients(self, brandName, productName):
         """

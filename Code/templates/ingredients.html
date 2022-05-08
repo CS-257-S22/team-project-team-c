@@ -5,6 +5,11 @@
         <link rel="stylesheet" href="../static/ingredients.css">
     </head>
     <body>
+        <div class="topnav">
+            <a href ="http://127.0.0.1:5000/">Home</a>
+            <a href="http://127.0.0.1:5000/help">Help</a>
+            <a href="http://127.0.0.1:5000/contact">Contact</a>
+        </div>
         <h1>What's in {{product}}?</h1>
         <ul> 
             {% for ingredient in ingredients: %}
