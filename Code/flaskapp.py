@@ -34,6 +34,10 @@ def contact():
 @app.route('/help')
 def help():
     return render_template('help.html')
+
+@app.route('/contact/contact_submitted')
+def contact_submitted():
+    return render_template('contact_submitted.html')
     
 @app.route('/displayproducts')
 def display_products():
