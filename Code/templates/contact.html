@@ -1,3 +1,5 @@
+<!-- template for the interactive contact form adapted from https://www.w3schools.com/howto/howto_css_contact_section.asp  -->
+
 <!doctype html>
 <html lang="en">
     <head>
@@ -22,15 +24,16 @@
             <div class="container">
                 <div style="text-align:center">
                   <h2>Connect With Us</h2>
-                  <p>Leave a message:</p>
+                  <h3> Have questions or suggestions? Leave us a message! </h3>
+                  <h3> If you would like us to respond to you, please provide a reachable email address. </h3>
                 </div>
                 <div class="row">
                   <div class="column">
                     <form action="/action_page.php">
-                      <label for="fname">First Name</label>
-                      <input type="text" id="fname" name="firstname" placeholder="Your name..">
-                      <label for="lname">Last Name</label>
-                      <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+                      <label for="fname">Name</label>
+                      <input type="text" id="name" name="name" placeholder="Your name..">
+                      <label for="lname"> Email </label>
+                      <input type="text" id="email" name="email" placeholder="(Optional) Your email address ..">
                       <label for="subject">Subject</label>
                       <textarea id="subject" name="subject" placeholder="Leave a message.." style="height:170px"></textarea>
                       <input type="submit" value="Submit">
