@@ -31,6 +31,20 @@
             </p>
             <p>
                 <div class = "howToUse">
+                    Or type a brand name to see what products it carries
+                </div>
+                <form action="displayproducts">
+                    <label id="brandLabel">Search brands...</label>
+                    <select name="brandSearch">
+                        {% for brand in brandList %}
+                        <option value="{{brand}}">{{brand}}</option>
+                        {% endfor %}
+                    </select>
+                    <input class="botton" type="submit" value="Search">
+                </form>
+            </p>
+            <p>
+                <div class = "howToUse">
                     Type the product you want to look up, or put a space to see the products list
                 </div>
                 <form action="displayingredients" method="post">
@@ -48,20 +62,6 @@
                             });
                         } );
                     </script>
-                    <input class="botton" type="submit" value="Search">
-                </form>
-            </p>
-            <p>
-                <div class = "howToUse">
-                    Or type a brand name to see what products it carries
-                </div>
-                <form action="displayproducts">
-                    <label id="brandLabel">Search brands...</label>
-                    <select name="brandSearch">
-                        {% for brand in brandList %}
-                        <option value="{{brand}}">{{brand}}</option>
-                        {% endfor %}
-                    </select>
                     <input class="botton" type="submit" value="Search">
                 </form>
             </p>

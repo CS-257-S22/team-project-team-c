@@ -6,7 +6,7 @@ import sys
 from what2Eat import *
 
 app = Flask(__name__)
-database = ProductData("SmallProductSheet.csv")
+database = ProductData("FinalData.csv")
 data = []
 helpMessage = "You can find all the ingredients of a product by going to http://127.0.0.1:5000/get_product_ingredients/[brandName]/[productName]. \
             \n Here is an example: \
@@ -49,9 +49,8 @@ def display_ingredients():
     @return a page with a list of all ingredients of the product
     """ 
     product = (request.form['product'])
-    rawIngredientsData = database.get_product_ingredients_product_only(product)
+    rawIngredientsData = database.get_product_ingredients_by_product(product)
     intredientList = rawIngredientsData.split(",")
-    # intredientList = ProductData.remove_comma(rawIngredientsData)
     return render_template('ingredients.html', product=product, ingredients=intredientList)
 
 @app.errorhandler(404)
