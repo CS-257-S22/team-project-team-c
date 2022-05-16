@@ -6,6 +6,10 @@ import csv
 import argparse
 from pkg_resources import require
 
+sys.path.append("/Users/kana/Desktop/team-project-team-c/Backend")
+from datasource import *
+
+
 class ProductData:
     def load_csv_file(self):
         """
@@ -174,19 +178,22 @@ if __name__ == '__main__':
     my_parser.add_argument('functionName', help='the name of the function you want to use')
     my_parser.add_argument('-b','--brandName', help= 'the name of the brand you want to look up (should be a string)')
     my_parser.add_argument('-p','--productName', help= 'the name of product you want to look up (should be a string)')
-    my_parser.add_argument('-f','--fileName', help= 'the file you want to search in (default is SmallProductSheet.csv)', default='FinalData.csv')
+    my_parser.add_argument('-f','--fileName', help= 'the file you want to search in (default is FinalData.csv)', default='FinalData.csv')
     args = my_parser.parse_args()
     sampleData = ProductData(args.fileName)
 
-    # if args.functionName == 'get_product_ingredients':
-    #     print(sampleData.get_product_ingredients(args.brandName, args.productName))
-    #     # command line example
-    #     # python3 what2Eat.py get_product_ingredients -b 'FRESH & EASY' -p 'BARBECUE SAUCE'
+    if args.functionName == 'get_product_ingredients':
+        print(sampleData.get_product_ingredients(args.brandName, args.productName))
+        my_source = DataSource()
+        my_source.get_all_products('DCI Cheese Company, Inc.')
+        my_source.get_all_ingredients('MOCHI ICE CREAM BONBONS')
+        # command line example
+        # python3 what2Eat.py get_product_ingredients -b 'FRESH & EASY' -p 'BARBECUE SAUCE'
 
-    # elif args.functionName == 'get_all_products':
-    #     print(sampleData.get_all_products(args.brandName))
-    #     # command line example
-    #     # python3 what2Eat.py get_all_products -b 'FRESH & EASY' 
+    elif args.functionName == 'get_all_products':
+        print(sampleData.get_all_products(args.brandName))
+        # command line example
+        # python3 what2Eat.py get_all_products -b 'FRESH & EASY' 
 
-    # else:
-    #     print("Incorrect argument(s)")
+    else:
+        print("Incorrect argument(s)")
