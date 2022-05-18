@@ -51,11 +51,7 @@ class DataSource:
             return None
 
     def get_brand_list(self):
-        """
-        Method to request a query to get the products carried by the brand a user inputs.
-        Args:
-            brandInput (str): brand name taken from user 
-        """
+        """ Return a list of all brands in the database"""
         try:
             cursor = self.connection.cursor()
             cursor.execute("SELECT DISTINCT brand_name FROM productTable")
@@ -68,11 +64,7 @@ class DataSource:
             return None
 
     def get_products_list(self):
-        """
-        Method to request a query to get the products carried by the brand a user inputs.
-        Args:
-            brandInput (str): brand name taken from user 
-        """
+        """ Return a list of all products in the database"""
         try:
             cursor = self.connection.cursor()
             cursor.execute("SELECT product_name FROM productTable")

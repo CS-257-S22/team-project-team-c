@@ -26,7 +26,6 @@ def homepage():
     @return a homepage with instructions
     """ 
     return render_template('homepage.html', productList=database.get_products_list(), brandList=database.get_brand_list())
-    #http://127.0.0.1:5000/
 
 @app.route('/contact')
 def contact():
@@ -58,20 +57,12 @@ def display_ingredients():
 
 @app.errorhandler(404)
 def page_not_found(e):
-    """ Generate a page that returns ingredients
-    @param 
-        e: 404 error
-    @return an error statement
-    """ 
+    """Display a 400 error page""" 
     return f'404 Page Not Found. {helpMessage}'
 
 @app.errorhandler(500)
 def python_bug(e):
-    """ Generate a page that returns ingredients
-    @param 
-        e: 500 error
-    @return an error statement
-    """ 
+    """ Display a 500 error page""" 
     return f'500 Page Unavaiable. {helpMessage}'
 
 if __name__ == '__main__':
