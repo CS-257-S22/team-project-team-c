@@ -3,4 +3,4 @@ CREATE TABLE productTable (
   product_name text,
   brand_name text,
   ingredients text
-);
+); 
