@@ -60,11 +60,19 @@ label {
     margin-right: 4%;
 }
 
-ul {
+/* ul {
     letter-spacing: 2.1px;
     justify-content: left;
     font-size: 14px;
     list-style: none;
+} */
+
+ul {
+    margin-bottom:6%;
+    font-size: 25px;
+    line-height:160%;
+    list-style-type: circle;
+    text-transform: capitalize;
 }
 
 .select {

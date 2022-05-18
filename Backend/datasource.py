@@ -1,6 +1,7 @@
 import psycopg2
 import psqlConfig as config
 
+errorMessage = "Something went wrong when executing the query: "
 class DataSource:
     def __init__(self):
         self.connection = self.connect()
@@ -21,14 +22,16 @@ class DataSource:
             brandInput (str): brand name taken from user 
         """
         try:
-            #set up a cursor
             cursor = self.connection.cursor()
-            #make the query using %s as a placeholder for the variable
             query = "SELECT product_name FROM productTable WHERE brand_name=%s"
             cursor.execute(query, (brandInput,))
-            print(cursor.fetchall())
+            record = []
+            for item in cursor.fetchall():
+                record.append(item[0]) #change a tuple to a list
+            return record
+
         except Exception as e:
-            print ("Something went wrong when executing the query: ", e)
+            print (errorMessage, e)
             return None
 
     def get_all_ingredients(self, productInput):
@@ -38,19 +41,44 @@ class DataSource:
             productInput (str): product name taken from user 
         """
         try:
-            #set up a cursor
             cursor = self.connection.cursor()
-            #make the query using %s as a placeholder for the variable
             query = "SELECT ingredients FROM productTable WHERE product_name=%s"
             cursor.execute(query, (productInput,))
-            print(cursor.fetchall())
+            ingredientList = cursor.fetchall()[0][0].split(", ")
+            return ingredientList
         except Exception as e:
-            print ("Something went wrong when executing the query: ", e)
+            print (errorMessage, e)
+            return None
+
+    def get_brand_list(self):
+        """ Return a list of all brands in the database"""
+        try:
+            cursor = self.connection.cursor()
+            cursor.execute("SELECT DISTINCT brand_name FROM productTable")
+            brandList = []
+            for brand in cursor.fetchall():
+                brandList.append(brand[0])
+            return brandList
+        except Exception as e:
+            print (errorMessage, e)
+            return None
+
+    def get_products_list(self):
+        """ Return a list of all products in the database"""
+        try:
+            cursor = self.connection.cursor()
+            cursor.execute("SELECT product_name FROM productTable")
+            productList = []
+            for product in cursor.fetchall():
+                productList.append(product[0])
+            return productList
+        except Exception as e:
+            print (errorMessage, e)
             return None
     
 if __name__ == '__main__':
     my_source = DataSource()
-    #get all the products carried by 'DCI Cheese Company, Inc.'
-    my_source.get_all_products('DCI Cheese Company, Inc.')
-    #get all the ingredients in 'MOCHI ICE CREAM BONBONS'
-    my_source.get_all_ingredients('MOCHI ICE CREAM BONBONS')
+    #print(my_source.get_products_list())
+    #print(my_source.get_brand_list())
+    print(my_source.get_all_products('DCI Cheese Company, Inc.'))
+    print(my_source.get_all_ingredients('MOCHI ICE CREAM BONBONS'))

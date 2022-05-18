@@ -3,11 +3,12 @@ from flask import Flask, render_template, request
 from importlib_metadata import NullFinder
 import csv
 import sys
-from what2Eat import *
+
+sys.path.append("../Backend")
+from datasource import *
 
 app = Flask(__name__)
-database = ProductData("FinalData.csv")
-data = []
+database = DataSource()
 helpMessage = "You can find all the ingredients of a product by going to http://127.0.0.1:5000/get_product_ingredients/[brandName]/[productName]. \
             \n Here is an example: \
             \n http://127.0.0.1:5000/get_product_ingredients/DCI Cheese Company, Inc./GREAT MIDWEST, CRANBERRY CHEDDAR \
@@ -24,8 +25,7 @@ def homepage():
     """ Generate a homepage
     @return a homepage with instructions
     """ 
-    return render_template('homepage.html', productList=database.get_product_list(), brandList=database.return_brands())
-    #http://127.0.0.1:5000/
+    return render_template('homepage.html', productList=database.get_products_list(), brandList=database.get_brand_list())
 
 @app.route('/contact')
 def contact():
@@ -53,29 +53,36 @@ def display_ingredients():
     @return a page with a list of all ingredients of the product
     """ 
     product = (request.form['product'])
-    rawIngredientsData = database.get_product_ingredients_by_product(product)
-    intredientList = rawIngredientsData.split(",")
-    return render_template('ingredients.html', product=product, ingredients=intredientList)
+    return render_template('ingredients.html', product=product, ingredients=database.get_all_ingredients(product))
 
 @app.errorhandler(404)
 def page_not_found(e):
+<<<<<<< HEAD
     """ Generate a page that returns ingredients
     @param 
         e: 404 error
     @return an error statement
     """ 
     #return render_templates('error.html')
+=======
+    """Display a 400 error page""" 
+>>>>>>> 09e12dfd64c1e5a35457e94d911ff02b27838a8f
     return f'404 Page Not Found. {helpMessage}'
 
 @app.errorhandler(500)
 def python_bug(e):
+<<<<<<< HEAD
     """ Generate a page that returns ingredients
     @param 
         e: 500 error
     @return an error statement
     """ 
     #return render_templates('error.html')
+=======
+    """ Display a 500 error page""" 
+>>>>>>> 09e12dfd64c1e5a35457e94d911ff02b27838a8f
     return f'500 Page Unavaiable. {helpMessage}'
 
 if __name__ == '__main__':
     app.run()
+    #app.run(host='127.0.0.1', port=5002)
