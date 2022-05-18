@@ -3,11 +3,12 @@ from flask import Flask, render_template, request
 from importlib_metadata import NullFinder
 import csv
 import sys
-from what2Eat import *
+
+sys.path.append("../Backend")
+from datasource import *
 
 app = Flask(__name__)
-database = ProductData("FinalData.csv")
-data = []
+database = DataSource()
 helpMessage = "You can find all the ingredients of a product by going to http://127.0.0.1:5000/get_product_ingredients/[brandName]/[productName]. \
             \n Here is an example: \
             \n http://127.0.0.1:5000/get_product_ingredients/DCI Cheese Company, Inc./GREAT MIDWEST, CRANBERRY CHEDDAR \
@@ -24,7 +25,7 @@ def homepage():
     """ Generate a homepage
     @return a homepage with instructions
     """ 
-    return render_template('homepage.html', productList=database.get_product_list(), brandList=database.return_brands())
+    return render_template('homepage.html', productList=database.get_products_list(), brandList=database.get_brand_list())
     #http://127.0.0.1:5000/
 
 @app.route('/contact')
@@ -53,9 +54,7 @@ def display_ingredients():
     @return a page with a list of all ingredients of the product
     """ 
     product = (request.form['product'])
-    rawIngredientsData = database.get_product_ingredients_by_product(product)
-    intredientList = rawIngredientsData.split(",")
-    return render_template('ingredients.html', product=product, ingredients=intredientList)
+    return render_template('ingredients.html', product=product, ingredients=database.get_all_ingredients(product))
 
 @app.errorhandler(404)
 def page_not_found(e):
@@ -77,3 +76,4 @@ def python_bug(e):
 
 if __name__ == '__main__':
     app.run()
+    #app.run(host='127.0.0.1', port=5002)
