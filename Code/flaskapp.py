@@ -57,32 +57,22 @@ def display_ingredients():
 
 @app.errorhandler(404)
 def page_not_found(e):
-<<<<<<< HEAD
     """ Generate a page that returns ingredients
     @param 
         e: 404 error
     @return an error statement
     """ 
-    #return render_templates('error.html')
-=======
-    """Display a 400 error page""" 
->>>>>>> 09e12dfd64c1e5a35457e94d911ff02b27838a8f
-    return f'404 Page Not Found. {helpMessage}'
+    return render_template('error.html')
 
 @app.errorhandler(500)
 def python_bug(e):
-<<<<<<< HEAD
     """ Generate a page that returns ingredients
     @param 
         e: 500 error
     @return an error statement
     """ 
-    #return render_templates('error.html')
-=======
-    """ Display a 500 error page""" 
->>>>>>> 09e12dfd64c1e5a35457e94d911ff02b27838a8f
-    return f'500 Page Unavaiable. {helpMessage}'
+    return render_template('error.html')
 
 if __name__ == '__main__':
-    app.run()
-    #app.run(host='127.0.0.1', port=5002)
+    # app.run()
+    app.run(host='127.0.0.1', port=5002)
