@@ -1,20 +1,8 @@
-body {
-    /* margin: 5%; */
-    background-color: #e5be6462;
-    font-family: 'Josefin Sans';
-    letter-spacing: 2.0px;
-}
-h1 {
-    margin-bottom: 5%;
-    font-size: 40px;
-}
 ul {
     margin-bottom:6%;
+    /* margin-left: 10px; */
     font-size: 25px;
     line-height:160%;
     list-style-type: circle;
     text-transform: capitalize;
-}
-a {
-    font-size: 20px;
 }

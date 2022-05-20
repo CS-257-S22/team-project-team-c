@@ -2,9 +2,14 @@
 <html>
     <head>
         <title>Ingredients in {{product}}</title>
+<<<<<<< HEAD
         <!-- <link rel="stylesheet" href="../static/products.css"> -->
         <link href="../static/homepage.css" rel="stylesheet">
+=======
+>>>>>>> frontend-revision
         <link href="../static/topnav.css" rel="stylesheet">
+        <link href="../static/homepage.css" rel="stylesheet">
+        <link rel="stylesheet" href="../static/products.css">
 
     </head>
     <body>
@@ -13,7 +18,9 @@
             <a href="/help">Help</a>
             <a href="/contact">Contact</a>
         </div>
+
         <h1>{{brand}} carries:</h1>
+
         <ul> 
             {% for product in products: %}
             <li>{{product}}</option>
