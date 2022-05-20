@@ -8,21 +8,6 @@ class TestTwoMainFunction(unittest.TestCase):
         """Set an app to test functions
         Written by Kana"""
         self.app = app.test_client()
-    
-    # def test_homepage(self):
-    #     """Test if the homepage displays the correct messages
-    #     Written by Kana"""
-    #     response = self.app.get('/', follow_redirects=True)
-    #     self.assertEqual(b'You can find all the ingredients of a product by going to http://127.0.0.1:5000/get_product_ingredients/[brandName]/[productName]. \
-    #         \n Here is an example: \
-    #         \n http://127.0.0.1:5000/get_product_ingredients/DCI Cheese Company, Inc./GREAT MIDWEST, CRANBERRY CHEDDAR \
-    #         \n \
-    #         \n You can also find all products carried by a certain brand by going to http://127.0.0.1:5000/get_all_products/[brandName] \
-    #         \n Here is an example: \
-    #         \n http://127.0.0.1:5000/get_all_products/Target Stores \
-    #         \n You can check if a product contains something by going to http://127.0.0.1:5000/contains_ingredient/[ingredient]/[brandName]/[productName]\
-    #         \n Here is an example: \
-    #         \n http://127.0.0.1:5000/contains_ingredient/chickpeas/Target Stores/TRADITIONAL HUMMUS', response.data)
 
     def test_homepage(self):
         """Test if the homepage displays the correct messages
