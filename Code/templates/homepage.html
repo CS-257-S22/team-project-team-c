@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <title>What 2 Eat</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js">  
@@ -10,10 +10,13 @@
         </script>
         
         <!-- CSS FILES -->   
+        <link rel="stylesheet" href="../static/bootstrap.min.css">
         <link href="../static/topnav.css" rel="stylesheet">
         <link href="../static/homepage.css" rel="stylesheet">
         
+
     </head>
+
     <body>
         <div class="topnav">
             <a href ="http://127.0.0.1:5000/">Home</a>
@@ -21,53 +24,62 @@
             <a href="http://127.0.0.1:5000/contact">Contact</a>
         </div>
 
-        <h1>What2Eat</h1>
-        <img src="../static/images/olive-oil.jpg" 
-             alt="olive oil">
-        <div class="description">
-            <p class="welcome">
-                Welcome to What2Eat! <br>
-                Search over 80,000 branded foods and private label data provided by the food industry. 
-            </p>
-            <p>
-                <div class = "howToUse">
-                    Select a brand to see what products it carries:
-                </div>
 
-                <form action="displayproducts">
-                    <label id="brandLabel">Search by brand...</label>
-                    <select name="brandSearch">
-                        {% for brand in brandList %}
-                        <option value="{{brand}}">{{brand}}</option>
-                        {% endfor %}
-                    </select>
-                    <input class="button" type="submit" value="Get Products">
-                </form>
-            </p>
+        <div class="row">
+            <div class="col-md-6 col-lg-6 col-md-6 col-sm-12">
+                
+                <div class="text-bg">
+                    <h1> What 2 Eat </h1>
+                    <p>  Welcome! Browse 80,000+ branded foods and private label data provided by the food industry. 
 
-            <p>
-                <div class = "howToUse">
-                    Type the product name to get ingredient information: 
-                </div>
-                <form action="displayingredients" method="post">
-                    <label> Search ingredients...</label>
-                    <input class="searchBar" type="text" id="tags" name="product">
-                    <script> 
-                        $(function() {
-                            var availableTags = [
-                                {% for product in productList %}
-                                    "{{product}}",
+                    <p>
+                        <div class = "howToUse">
+                            Select a brand to see what products it carries
+                        </div>
+                        <form action="displayproducts">
+                            <select name="brandSearch">
+                                {% for brand in brandList %}
+                                <option value="{{brand}}">{{brand}}</option>
                                 {% endfor %}
-                            ];
-                            $( "#tags" ).autocomplete({
-                                source: availableTags
-                            });
-                        } );
-                    </script>
-                    <input class="button" type="submit" value="Get Ingredients">
-                </form>
-            </p>
+                            </select>
+                            <input class="button" type="submit" value="Get Products">
+                        </form>
+                    </p>
+
+                    <p>
+                        <div class = "howToUse">
+                            Type the product name to view the full ingredient list
+                        </div>
+                        <form class="searchBox" action="displayingredients" method="post">
+                            <input class="searchBox_fom" placeholder="product name" type="text" id="tags" name="product">
+                            <script> 
+                                $(function() {
+                                    var availableTags = [
+                                        {% for product in productList %}
+                                            "{{product}}",
+                                        {% endfor %}
+                                    ];
+                                    $( "#tags" ).autocomplete({
+                                        source: availableTags
+                                    });
+                                } );
+                            </script>
+                            <input class="button" type="submit" value="Get Ingredients">
+                        </form>
+                    </p>     
+
+            </div>
         </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                  <img src="../static/plate.jpeg" alt = "food plate">
+            </div>
+            </div> 
+
+        </div>
+    </div>
+
+
     </body>
 </html>
+
 
