@@ -22,33 +22,35 @@
         </div>
 
         <h1>What2Eat</h1>
-        <img src="../static/olive-oil.jpg" 
+        <img src="../static/images/olive-oil.jpg" 
              alt="olive oil">
         <div class="description">
             <p class="welcome">
                 Welcome to What2Eat! <br>
-                With our database, you can find ingredients in the food products you eat every day.
+                Search over 80,000 branded foods and private label data provided by the food industry. 
             </p>
             <p>
                 <div class = "howToUse">
-                    Or type a brand name to see what products it carries
+                    Select a brand to see what products it carries:
                 </div>
+
                 <form action="displayproducts">
-                    <label id="brandLabel">Search brands...</label>
+                    <label id="brandLabel">Search by brand...</label>
                     <select name="brandSearch">
                         {% for brand in brandList %}
                         <option value="{{brand}}">{{brand}}</option>
                         {% endfor %}
                     </select>
-                    <input class="button" type="submit" value="Search">
+                    <input class="button" type="submit" value="Get Products">
                 </form>
             </p>
+
             <p>
                 <div class = "howToUse">
-                    Type the product you want to look up, or put a space to see the products list
+                    Type the product name to get ingredient information: 
                 </div>
                 <form action="displayingredients" method="post">
-                    <label>Search products...</label>
+                    <label> Search ingredients...</label>
                     <input class="searchBar" type="text" id="tags" name="product">
                     <script> 
                         $(function() {
@@ -62,7 +64,7 @@
                             });
                         } );
                     </script>
-                    <input class="button" type="submit" value="Search">
+                    <input class="button" type="submit" value="Get Ingredients">
                 </form>
             </p>
         </div>
