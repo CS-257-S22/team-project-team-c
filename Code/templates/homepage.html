@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <title>What 2 Eat</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js">  
@@ -10,10 +10,13 @@
         </script>
         
         <!-- CSS FILES -->   
+        <link rel="stylesheet" href="../static/bootstrap.min.css">
         <link href="../static/topnav.css" rel="stylesheet">
         <link href="../static/homepage.css" rel="stylesheet">
         
+
     </head>
+
     <body>
         <div class="topnav">
             <a href ="http://127.0.0.1:5000/">Home</a>
@@ -21,6 +24,7 @@
             <a href="http://127.0.0.1:5000/contact">Contact</a>
         </div>
 
+<<<<<<< HEAD
         <h1>What2Eat</h1>
         <img src="../static/olive-oil.jpg" 
              alt="olive oil">
@@ -68,6 +72,8 @@
             <a href="http://127.0.0.1:5000/contact">Contact</a>
         </div>
 
+=======
+>>>>>>> frontend-revision
 
         <div class="row">
             <div class="col-md-6 col-lg-6 col-md-6 col-sm-12">
@@ -84,6 +90,7 @@
                             <select name="brandSearch">
                                 {% for brand in brandList %}
                                 <option value="{{brand}}">{{brand}}</option>
+<<<<<<< HEAD
                                 {% endfor %}
                             </select>
                             <input class="button" type="submit" value="Get Products">
@@ -139,17 +146,48 @@
                             var availableTags = [
                                 {% for product in productList %}
                                     "{{product}}",
+=======
+>>>>>>> frontend-revision
                                 {% endfor %}
-                            ];
-                            $( "#tags" ).autocomplete({
-                                source: availableTags
-                            });
-                        } );
-                    </script>
-                    <input class="button" type="submit" value="Search">
-                </form>
-            </p>
+                            </select>
+                            <input class="button" type="submit" value="Get Products">
+                        </form>
+                    </p>
+
+                    <p>
+                        <div class = "howToUse">
+                            Enter product name to view the full ingredient list
+                        </div>
+                        <form class="searchBox" action="displayingredients" method="post">
+                            <input class="searchBox_fom" placeholder="product name" type="text" id="tags" name="product">
+                            <script> 
+                                $(function() {
+                                    var availableTags = [
+                                        {% for product in productList %}
+                                            "{{product}}",
+                                        {% endfor %}
+                                    ];
+                                    $( "#tags" ).autocomplete({
+                                        source: availableTags
+                                    });
+                                } );
+                            </script>
+                            <input class="button" type="submit" value="Get Ingredients">
+                        </form>
+                    </p>     
+
+            </div>
         </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                  <img src="../static/images/plate.jpeg" alt = "food plate">
+            </div>
+            </div> 
+
+        </div>
+    </div>
+
+
     </body>
 </html>
+
 
