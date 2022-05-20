@@ -2,10 +2,9 @@
 <html>
     <head>
         <title>Ingredients in {{product}}</title>
-        <link rel="stylesheet" href="../static/products.css">
         <link href="../static/topnav.css" rel="stylesheet">
         <link href="../static/homepage.css" rel="stylesheet">
-
+        <link rel="stylesheet" href="../static/products.css">
 
     </head>
     <body>
@@ -14,7 +13,9 @@
             <a href="http://127.0.0.1:5000/help">Help</a>
             <a href="http://127.0.0.1:5000/contact">Contact</a>
         </div>
+
         <h1>{{brand}} carries:</h1>
+
         <ul> 
             {% for product in products: %}
             <li>{{product}}</option>
