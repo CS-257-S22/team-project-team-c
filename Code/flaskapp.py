@@ -62,8 +62,7 @@ def page_not_found(e):
         e: 404 error
     @return an error statement
     """ 
-    #return render_templates('error.html')
-    return f'404 Page Not Found. {helpMessage}'
+    return render_template('error.html')
 
 @app.errorhandler(500)
 def python_bug(e):
@@ -72,9 +71,8 @@ def python_bug(e):
         e: 500 error
     @return an error statement
     """ 
-    #return render_templates('error.html')
-    return f'500 Page Unavaiable. {helpMessage}'
+    return render_template('error.html')
 
 if __name__ == '__main__':
-    #app.run()
-    app.run(host='localhost', port=5107)
+    # app.run()
+    app.run(host='127.0.0.1', port=5002)
