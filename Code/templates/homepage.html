@@ -36,7 +36,7 @@
                         <div class = "howToUse">
                             Select a brand to see what products it carries
                         </div>
-                        <form action="displayproducts">
+                        <form action="displayproducts" method="post">
                             <select name="brandSearch">
                                 {% for brand in brandList %}
                                 <option value="{{brand}}">{{brand}}</option>

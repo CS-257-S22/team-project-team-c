@@ -39,12 +39,12 @@ def help():
 def contact_submitted():
     return render_template('contact_submitted.html')
     
-@app.route('/displayproducts')
+@app.route('/displayproducts', methods=['POST'])
 def display_products():
     """ Generate a page that displays ingredients
     @return a page with a list of all products carried by the brand
     """ 
-    brand = (request.args['brandSearch'])
+    brand = (request.form['brandSearch'])
     return render_template('products.html', brand=brand, products=database.get_all_products(brand))
 
 @app.route('/displayingredients', methods=['POST'])
