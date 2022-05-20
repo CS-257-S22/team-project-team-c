@@ -1,6 +1,7 @@
 from flaskapp import *
 import unittest
-import what2Eat 
+
+traditional_hummus_ingredients = ['CHICKPEAS', 'WATER', 'SESAME TAHINI', 'CANOLA OLIVE OIL BLEND', 'SALT', 'CITRIC ACID', 'NATURAL FLAVOR', 'GARLIC', 'SPICES', 'POTASSIUM SORBATE AND SODIUM BENZOATE']
 
 class TestTwoMainFunction(unittest.TestCase):
     def setUp(self):
@@ -23,68 +24,44 @@ class TestTwoMainFunction(unittest.TestCase):
     #         \n Here is an example: \
     #         \n http://127.0.0.1:5000/contains_ingredient/chickpeas/Target Stores/TRADITIONAL HUMMUS', response.data)
 
-    def test_display_products_success(self):
+    def test_homepage(self):
+        """Test if the homepage displays the correct messages
+        Written by Kana"""
+        response = self.app.get('/', follow_redirects=True)
+        self.assertIn(b'Welcome! Browse 80,000+ branded foods and private label data provided by the food industry.', response.data)
+
+    def test_display_products(self):
         """Test if the page displays all products
         Written by Kana"""
-        response = self.app.get('/displayingredients',follow_redirects=True)
-        self.assertEqual(b"G. T. Japan, Inc. carries: ['MOCHI ICE CREAM BONBONS']", response.data)
-
-    # def test_display_products_fail(self):
-    #     """Test if the page displays None when receiving a wrong brand name
-    #     Written by Kana"""
-    #     response = self.app.get('/get_all_products/random brand', follow_redirects=True)
-    #     self.assertEqual(b'random brand carries: None', response.data)
-
-    # def test_get_ingredients(self):
-    #     '''
-    #     @Written by: Isabella
-    #     Retreiving the ingreident list from 
-    #     valid inputs for product and brand name.'''
-    #     response = self.app.get('/get_product_ingredients/Target Stores/TRADITIONAL HUMMUS', follow_redirects=True)
-    #     self.assertEqual(b'TRADITIONAL HUMMUS from Target Stores contains: chickpeas, water, sesame tahini, canola/olive oil blend, salt, citric acid, natural flavor, garlic, spices, potassium sorbate and sodium benzoate (to maintain freshness).', response.data)
+        response = self.app.post('/displayproducts', data={"brandSearch":"G. T. Japan, Inc."})
+        self.assertIn(b'MOCHI ICE CREAM BONBONS', response.data)
     
-    # def test_invalid_product_get_ingredients(self):
-    #     '''
-    #     @Written by: Isabella
-    #     Edge case: user inputs invalid product name'''
-    #     response = self.app.get('/get_product_ingredients/Target Stores/HUMMUS', follow_redirects=True)
-    #     self.assertEqual(b'HUMMUS from Target Stores contains: None', response.data)
-    
-    # def test_display_ingredients_falseProduct_num(self):
-    #     """Test if the page displays None when receiving a wrong product name (as a number)
-    #     Edge case: user inputs invalid product name as a number
-    #     Written by Kana"""
-    #     response = self.app.get('/get_product_ingredients/FRESH & EASY/1031', follow_redirects=True)
-    #     self.assertEqual(b'1031 from FRESH & EASY contains: None', response.data)
+    def test_display_ingredients(self):
+        """Test if the page displays all ingredients
+        Written by Kana"""
+        response = self.app.post('/displayingredients', data={"product":"TRADITIONAL HUMMUS"})
+        for ingredient in traditional_hummus_ingredients:
+            ingredient = bytes(ingredient, 'UTF-8')
+            self.assertIn(ingredient, response.data)
 
-    # def test_invalid_brand_get_ingredients(self):
-    #     '''
-    #     @Written by: Isabella
-    #     Edge case: user inputs invalid brand name'''
-    #     response = self.app.get('/get_product_ingredients/Target/TRADITIONAL HUMMUS', follow_redirects=True)
-    #     self.assertEqual(b'TRADITIONAL HUMMUS from Target contains: None', response.data)
+    def test_display_ingredients_404(self):
+        """Test if the 404 error page is shown when the product input is invalid
+        Written by Kana"""
+        response = self.app.post('/displayingredients', data={"product":"RANDOM PRODUCT"})
+        self.assertIn(b'Page Not Found', response.data)  
     
-    # def test_display_ingredients_falseBrand_num(self):
-    #     """Test if the page displays None when receiving a wrong product name (as a number)
-    #     Edge case: user inputs invalid brand name as a number
-    #     Written by Kana"""
-    #     response = self.app.get('/get_product_ingredients/1031/DICED TOMATOES', follow_redirects=True)
-    #     self.assertEqual(b'DICED TOMATOES from 1031 contains: None', response.data)
-
-    # def test_display_ingredients_falseCombo(self):
-    #     """Test if the page displays ingredients when receiving a wrong combination of an existing brand name and an existing product name
-    #     Written by Kana"""
-    #     response = self.app.get('/get_product_ingredients/Target Stores/DICED TOMATOES', follow_redirects=True)
-    #     self.assertEqual(b'DICED TOMATOES from Target Stores contains: None', response.data)
+    def test_help(self):
+        """Test if the page displays FAQ
+        Written by Kana"""
+        response = self.app.get('/help', follow_redirects=True)
+        self.assertIn(b'Frequently Asked Questions', response.data)
     
-    # def test_contains_ingredient(self):
-    #     '''
-    #     @Written by: Isabella
-    #     Checking if a product contains ingreident'''
-    #     response = self.app.get('/contains_ingredient/chickpeas/Target Stores/TRADITIONAL HUMMUS', follow_redirects=True)
-    #     print(response.data)
-    #     self.assertEqual(b'TRADITIONAL HUMMUS from Target Stores contains chickpeas', response.data)
-
+    
+    def test_help(self):
+        """Test if the page displays a contact form
+        Written by Kana"""
+        response = self.app.get('/contact', follow_redirects=True)
+        self.assertIn(b'Connect With Us', response.data)
 
 if __name__ == '__main__':
     unittest.main()
