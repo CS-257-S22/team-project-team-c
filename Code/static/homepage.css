@@ -11,6 +11,8 @@ body {
     line-height: 1.80857;
     font-weight: normal;
     overflow-x: hidden;
+    margin-right: auto;
+    margin-left: auto;
 
 }
 
@@ -50,7 +52,7 @@ img {
 }
 
 p {
-    margin-top: 4%;
+    /* margin-top: 4%; */
     display: flex;
     justify-content: left;
     font-weight: 300;
