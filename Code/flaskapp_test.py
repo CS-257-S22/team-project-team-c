@@ -1,6 +1,5 @@
 from flaskapp import *
 import unittest
-import what2Eat 
 
 class TestTwoMainFunction(unittest.TestCase):
     def setUp(self):
@@ -23,12 +22,21 @@ class TestTwoMainFunction(unittest.TestCase):
     #         \n Here is an example: \
     #         \n http://127.0.0.1:5000/contains_ingredient/chickpeas/Target Stores/TRADITIONAL HUMMUS', response.data)
 
-    def test_display_products_success(self):
+    # def display_product(brand):
+    # return client.get('/logout', follow_redirects=True)
+
+    def test_display_products(self):
         """Test if the page displays all products
         Written by Kana"""
-        response = self.app.get('/displayingredients',follow_redirects=True)
-        self.assertEqual(b"G. T. Japan, Inc. carries: ['MOCHI ICE CREAM BONBONS']", response.data)
-
+        response = self.app.post('/displayproducts', data={"brandSearch":"G. T. Japan, Inc."})
+        self.assertIn(b'MOCHI ICE CREAM BONBONS', response.data)
+    
+    # def test_display_ingredients(self):
+    #     """Test if the page displays all ingredients
+    #     Written by Kana"""
+    #     response = self.app.post('/displayingredients', data={"product":"G. T. Japan, Inc."})
+    #     self.assertIn(b'MOCHI ICE CREAM BONBONS', response.data)
+        
     # def test_display_products_fail(self):
     #     """Test if the page displays None when receiving a wrong brand name
     #     Written by Kana"""
