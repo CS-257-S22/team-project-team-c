@@ -6,6 +6,9 @@
   overflow: hidden;
 }
 
+.topnav .heading {
+  color: red;
+}
 /* Style the links inside the navigation bar */
 .topnav a {
   float: left;
