@@ -19,19 +19,34 @@ body {
 }
 
 h1 {
-    font-size: 24px 
+    color: #43960f;
+    padding-top: 30px;
+    font-size: 71px;
+    line-height: 85px;
+    font-weight: bold;
 }
+
 h2 {
-    font-size: 22px 
+    color: gray;
+    padding-top: 10px;
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: bold;
 }
+
 h3 {
-    font-size: 18px 
+    font-size: 20px;
+    display: block;
+    color: #020500;
+    line-height: 30px;
+    padding-bottom: 5px;
+    font-weight: 500;
+    text-align: center;
 
 }
-h4 {
-    font-size: 16px 
-}
 
+
+/* list */
 ul {
     margin-bottom:6%;
     font-size: 20px;
@@ -55,10 +70,11 @@ img.one {
 img.two {
     margin-left: auto;
     margin-right: auto;
-    max-width: 70%;
+    max-width: 50%;
     object-fit: contain;
     display: flex;
 }
+
 .description {
     display: flex;
     flex-flow: column;
@@ -79,6 +95,8 @@ p {
     float: left; 
     padding-left: 20px;
 }
+
+
 
 .welcome { 
     margin-top: 8%;
@@ -149,8 +167,12 @@ select {
     box-shadow: #b0b0b0 0px -2px 9px 0px;
 }
 
+.center {
+    text-align: center;
+    border: 3px solid green;
+}
 
-/* Special text formatting */ 
+/* Special text formatting non-centered)*/ 
 .text-bg {float: left; padding-left: 20px;}
 
 .text-bg h1 {
