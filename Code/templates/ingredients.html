@@ -2,10 +2,9 @@
 <html>
     <head>
         <title>Ingredients in {{product}}</title>
-        <link rel="stylesheet" href="../static/ingredients.css">
-        <link href="../static/homepage.css" rel="stylesheet">
+        <link rel="stylesheet" href="../static/bootstrap.min.css">
         <link href="../static/topnav.css" rel="stylesheet">
-        <!-- <link rel="stylesheet" href="../static/bootstrap.min.css"> -->
+        <link href="../static/homepage.css" rel="stylesheet">
 
     </head>
     <body>
@@ -15,7 +14,34 @@
             <a href="/contact">Contact</a>
         </div>
 
+        <div class="row">
 
+            <!-- left hand side of the page -->
+            <div class="col-md-6 col-lg-6 col-md-6 col-sm-12">
+                <div class="text-bg">
+                    <h2> What's in {{product}}? </h2>
+                    <ul> 
+                        {% for ingredient in ingredients: %}
+                        <li>{{ingredient}}</option>
+                        {% endfor %}
+                    </ul>
+                    <a href="/">Search different brands/products</a>
+                </div>
+            </div>
+                
+            <!-- right hand side of the page -->
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                  <img class = "two" src="../static/images/food-pyramid.jpeg" alt = "food pyramid">
+            </div>
+            </div> 
+
+        </div>
+    </body>
+    </html>
+
+   
+
+<!-- 
         <h1>What's in {{product}}?</h1>
         <ul> 
             {% for ingredient in ingredients: %}
@@ -24,4 +50,5 @@
         </ul>
         <a href="/">Search different brands/products</a>
     </body>
-</html>
+</html> -->
+
