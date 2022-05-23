@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Ingredients in {{product}}</title>
+        <title>{{brand}} products </title>
+        <link rel="stylesheet" href="../static/bootstrap.min.css">
         <link href="../static/topnav.css" rel="stylesheet">
-        <link rel="stylesheet" href="../static/products.css">
         <link href="../static/homepage.css" rel="stylesheet">
-        <!-- <link rel="stylesheet" href="../static/bootstrap.min.css"> -->
+
 
     </head>
     
@@ -16,13 +16,22 @@
             <a href="/contact">Contact</a>
         </div>
 
-        <h1>{{brand}} carries:</h1>
+        <div class="row">
 
-        <ul> 
-            {% for product in products: %}
-            <li>{{product}}</option>
-            {% endfor %}
-        </ul>
-        <a href="/">Search different brands/products</a>
+            <!-- left hand side of the page -->
+            <div class="col-md-6 col-lg-6 col-md-6 col-sm-12">
+                <div class="text-bg">
+                    <h2> {{brand}} carries:</h2>
+                    <ul> 
+                        {% for product in products: %}
+                        <li>{{product}}</option>
+                        {% endfor %}
+                    </ul>
+                    <a href="/">Search different brands/products</a>
+                </div>
+            </div>
+                           
+        </div> 
+
     </body>
 </html>
