@@ -1,23 +1,37 @@
-h1{
-font-size: 50px;
-font-weight:800;
-text-align:center;
+body {
+    color: #666666;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.80857;
+    font-weight: normal;
+    overflow-x: hidden;
+    text-align: center;
+}
+p {
+    text-indent: 1em;
 }
 
-h2
-{font-size:25px;
-text-align:center;
-margin-bottom: 10px;
-}
-
-h3
-{font-size:20px;
-text-align:center
-}
-
-
-img {
-    margin-top: 1%;
+img.broccoli {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%;
+    margin-bottom: 5%;
     max-width: 30%;
-    margin-bottom: 0%;
+    object-fit: contain;
+    display: flex;
 }
+
+h1{
+    font-size: 60px;
+    font-weight:800;
+    margin: 1%;
+}
+
+h2{
+    font-size:25px;
+}
+
+h3{
+    font-size:20px;
+}
+
