@@ -45,7 +45,7 @@ def display_products():
     @return a page with a list of all products carried by the brand
     """ 
     brand = (request.form['brandSearch'])
-    return render_template('products.html', brand=brand, products=database.get_all_products(brand))
+    return render_template('products.html', brand=brand, products=database.get_all_products_from_brand(brand))
 
 @app.route('/displayingredients', methods=['POST'])
 def display_ingredients():
@@ -53,7 +53,7 @@ def display_ingredients():
     @return a page with a list of all ingredients of the product
     """ 
     product = (request.form['product'])
-    return render_template('ingredients.html', product=product, ingredients=database.get_all_ingredients(product))
+    return render_template('ingredients.html', product=product, ingredients=database.get_all_ingredients_from_product(product))
 
 @app.errorhandler(404)
 def page_not_found(e):
