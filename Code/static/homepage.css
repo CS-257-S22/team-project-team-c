@@ -204,11 +204,36 @@ font-weight: bold;
     display: flex;
   }
   
-  /* Create two equal columns that sits next to each other */
   .column {
     flex: 50%;
     padding: 10px;
     height: 300px; /* Should be removed. Only for demonstration */
+  }
+
+/* .copyright {
+    padding: 20px 0px;
+    margin-top: 55px;
+    background-color: #428713;
+}
+.copyright p {
+    color: #fff;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+  
+}
+.copyright a {
+    color: #fff;
+}
+.copyright a:hover {
+    color: #ff7e1d ;
+} */
+
+footer {
+    text-align: center;
+    /* padding: 3px; */
+    background-color: #428713;
+    color: white;
   }
 
 
