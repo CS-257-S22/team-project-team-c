@@ -28,9 +28,9 @@ h1 {
 }
 
 h2 {
-    color: gray;
+    color: #43960f;
     padding-top: 10px;
-    font-size: 24px;
+    font-size: 30px;
     line-height: 30px;
     font-weight: bold;
 }
@@ -45,6 +45,28 @@ h3 {
     text-align: center;
 
 }
+
+
+/* p {
+    margin-top: 1%;
+    display: flex;
+    justify-content: left;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 24px;
+    float: left; 
+    padding-left: 20px;
+} */
+
+p {
+    font-size: 15px;
+    display: block;
+    color: #020500;
+    line-height: 30px;
+    padding-bottom: 5px;
+    font-weight: 500;
+}
+
 
 
 /* list */
@@ -68,10 +90,23 @@ img.one {
 }
 
 /* Smaller images */
+
 img.two {
+    margin-top: 1%;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 1%;
     max-width: 50%;
+    object-fit: contain;
+    display: flex;
+}
+
+img.three {
+    margin-top: 1%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1%;
+    max-width: 30%;
     object-fit: contain;
     display: flex;
 }
@@ -84,17 +119,6 @@ img.two {
     margin-right: auto;
     color: rgb(35, 35, 35);
     letter-spacing: 2.1px;
-}
-
-p {
-    margin-top: 1%;
-    display: flex;
-    justify-content: left;
-    font-weight: 300;
-    font-size: 15px;
-    line-height: 24px;
-    float: left; 
-    padding-left: 20px;
 }
 
 
