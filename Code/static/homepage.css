@@ -28,9 +28,9 @@ h1 {
 }
 
 h2 {
-    color: gray;
+    color: #43960f;
     padding-top: 10px;
-    font-size: 24px;
+    font-size: 30px;
     line-height: 30px;
     font-weight: bold;
 }
@@ -45,6 +45,28 @@ h3 {
     text-align: center;
 
 }
+
+
+/* p {
+    margin-top: 1%;
+    display: flex;
+    justify-content: left;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 24px;
+    float: left; 
+    padding-left: 20px;
+} */
+
+p {
+    font-size: 15px;
+    display: block;
+    color: #020500;
+    line-height: 30px;
+    padding-bottom: 5px;
+    font-weight: 500;
+}
+
 
 
 /* list */
@@ -68,10 +90,23 @@ img.one {
 }
 
 /* Smaller images */
+
 img.two {
+    margin-top: 1%;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 1%;
     max-width: 50%;
+    object-fit: contain;
+    display: flex;
+}
+
+img.three {
+    margin-top: 1%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1%;
+    max-width: 30%;
     object-fit: contain;
     display: flex;
 }
@@ -86,17 +121,6 @@ img.two {
     letter-spacing: 2.1px;
 }
 
-p {
-    margin-top: 1%;
-    display: flex;
-    justify-content: left;
-    font-weight: 300;
-    font-size: 15px;
-    line-height: 24px;
-    float: left; 
-    padding-left: 20px;
-}
-
 
 
 .welcome { 
@@ -108,6 +132,7 @@ p {
 .howToUse {
     font-size: 16px;
     margin-bottom: 2%;
+    margin-top: 3%;
 }
 
 
@@ -174,7 +199,7 @@ select {
 }
 
 /* Special text formatting non-centered)*/ 
-.text-bg {float: left; padding-left: 20px;}
+.text-bg {float: left}
 
 .text-bg h1 {
 color: #43960f;
@@ -211,31 +236,7 @@ font-weight: bold;
     height: 300px; /* Should be removed. Only for demonstration */
   }
 
-/* .copyright {
-    padding: 20px 0px;
-    margin-top: 55px;
-    background-color: #428713;
-}
-.copyright p {
-    color: #fff;
-    font-size: 18px;
-    line-height: 22px;
-    text-align: center;
-  
-}
-.copyright a {
-    color: #fff;
-}
-.copyright a:hover {
-    color: #ff7e1d ;
-} */
 
-footer {
-    text-align: center;
-    /* padding: 3px; */
-    background-color: #428713;
-    color: white;
-  }
 
 
 
