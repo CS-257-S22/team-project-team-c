@@ -4,7 +4,7 @@ How to run the flask app:
 *  create psqlConfig.py with a database name (teamc). a user name (teamc), and a password
 *  run: psql -U teamc -h localhost -d teamc < createtable.sql
 *  run: psql -U teamc -h localhost -d teamc
-*  run: \copy productTable FROM 'FinalData.csv' DELIMITER ',' CSV
+*  run: \copy productTable FROM 'UpdatedFinalData.csv' DELIMITER ',' CSV
 *  go to ../Code
 *  run: python3 flaskapp.py
 
